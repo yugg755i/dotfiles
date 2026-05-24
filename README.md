@@ -8,7 +8,7 @@ Built to feel minimal, warm, distraction-free, and actually usable for daily wor
 
 ## Preview
 
-![Uploading Screenshot-2026-05-24_14:36:17.png…]()
+[](https://github.com/yugg755i/dotfiles/blob/main/Screenshot-2026-05-24_14:22:44.png?raw=true)
 
 ---
 
