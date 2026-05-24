@@ -117,7 +117,8 @@ https://raw.githubusercontent.com/dusklinux/images/main/dark/0067.jpg
 
 ## Credits
 
-waybar and rofi - https://github.com/martin-djakovic/dotfiles
+- waybar and rofi - https://github.com/martin-djakovic/dotfiles
+
 ---
 
 ## Notes
