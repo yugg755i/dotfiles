@@ -1,0 +1,84 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "height": 25,
+    "spacing": 0,
+    "modules-left": ["hyprland/workspaces", "custom/lyrics"],
+    "modules-center": ["custom/clock"],
+    "modules-right": ["pulseaudio", "temperature", "battery", "custom/power-mode", "backlight", "custom/sysinfo"],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        }
+    },
+
+    "mpd": {
+        "format": "<span color='#49454e'>[ </span><span color='#cec2db'></span> {artist} - {title}<span color='#49454e'> ]</span>",
+        "on-click": "swaync-client -t",
+	"format-disconnected": "",
+        "format-paused": "",
+        "format-stopped": "",        
+	"tooltip": false
+    },
+
+   "custom/lyrics": {
+   	"exec": "~/.config/waybar/scripts/waybar-lyrics.sh",
+    	"interval": 1,
+        "on-click": "swaync-client -t",
+    	"return-type": "json",
+    	"on-click-right": "~/.config/waybar/scripts/toggle-lyrics.sh",
+    	"tooltip": true
+    },
+
+	"custom/clock": {
+    		"exec": "date +'%H:%M %A, %b %d' | awk '{print tolower($0)}'",
+    		"interval": 3,
+    		"format": "<span color='#49454e'>[ </span><span color='#cec2db'>{}</span><span color='#49454e'> ]</span>"
+	},
+	
+  "custom/sysinfo": {
+    "format": "<span color='#49454e'></span><span color='#cec2db'>{}</span><span color='#49454e'></span>",
+    "on-click-right": "kitty -e btop",
+    "on-click": "swaync-client -t",
+    "on-click-middle": "bash ~/.config/rofi/powermenu.sh",
+    "exec": "~/.config/waybar/scripts/waybar-sysinfo.sh",
+    "interval": 3,
+    "return-type": "json"
+  },
+    "pulseaudio": {
+        "format": "<span color='#cec2db'>vol:</span> <span color='#958e99'>{volume}%</span>"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+        "format": "<span color='#49454e'> / </span><span color='#cec2db'>temp:</span> <span color='#958e99'>{temperatureC}°C</span>",
+        "critical-threshold": 85,
+        "tooltip": false
+    },
+
+    "battery": {
+        "format": "<span color='#49454e'> / </span><span color='#cec2db'>bat:</span> <span color='#958e99'>{capacity}%</span>",
+        "format-charging": "<span color='#49454e'> / </span><span color='#cec2db'>ac:</span> <span color='#958e99'>{capacity}%</span>",
+        "states": {
+        "critical": 15
+    	},
+    	"tooltip": false,
+    	"interval": 20
+
+    },
+
+    "custom/power-mode": {
+        "exec": "~/.config/rofi/power-mode.sh --status",
+        "on-click": "~/.config/rofi/power-mode.sh",
+        "interval": 5,
+        "format": "<span color='#49454e'> / </span><span color='#cec2db'>mode:</span> <span color='#958e99'>{}</span>"
+    },
+
+    "backlight": {
+        "format": "<span color='#49454e'> / </span><span color='#cec2db'>mon:</span> <span color='#958e99'>{percent}% </span>",
+        "tooltip": false
+    }
+}

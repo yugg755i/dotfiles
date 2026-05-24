@@ -1,0 +1,225 @@
+@import "colors.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    transition: all 100ms ease;
+}
+
+/* NOTIFICATION POPUPS */
+.notification-window {
+    background: transparent;
+    margin: 4px;
+}
+
+.notification {
+    background: alpha(@surface, 0.88);
+    color: @on_surface;
+    border-radius: 0px;
+    border: 1px solid @outline_variant;
+    padding: 10px 12px;
+    margin: 4px;
+    box-shadow: none;
+}
+
+.notification:hover {
+    background: alpha(@surface_container, 0.92);
+    border-color: @primary;
+}
+
+.notification-title {
+    font-weight: bold;
+    font-size: 13px;
+    color: @primary;
+}
+
+.notification-content {
+    font-size: 12px;
+    color: @on_surface_variant;
+    margin-top: 2px;
+}
+
+.notification-action {
+    background: transparent;
+    color: @on_surface_variant;
+    border: 1px solid @outline_variant;
+    border-radius: 0px;
+    padding: 2px 8px;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.notification-action:hover {
+    background: alpha(@primary, 0.1);
+    color: @primary;
+    border-color: @primary;
+}
+
+.close-button {
+    background: transparent;
+    color: @on_surface_variant;
+    border: none;
+    border-radius: 0px;
+    min-width: 18px;
+    min-height: 18px;
+    font-size: 11px;
+}
+
+.close-button:hover {
+    color: @error;
+}
+
+.notification.critical {
+    border-color: @error;
+    background: alpha(@surface, 0.92);
+    color: @on_error_container;
+}
+
+.notification.critical .notification-title {
+    color: @error;
+}
+
+.control-center {
+    background: alpha(@surface, 0.90);
+    border-radius: 0px;
+    border: 1px solid @outline_variant;
+    box-shadow: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* kill rounding on everything inside */
+.control-center * {
+    border-radius: 0px;
+}
+
+.control-center-list {
+    padding: 4px;
+}
+
+/* TITLE */
+.widget-title {
+    color: @on_surface_variant;
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding: 10px 12px 6px 12px;
+    border-bottom: 1px solid @outline_variant;
+}
+
+.widget-title > button {
+    background: transparent;
+    color: @on_surface_variant;
+    border: 1px solid @outline_variant;
+    border-radius: 0px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+.widget-title > button:hover {
+    color: @error;
+    border-color: @error;
+    background: transparent;
+}
+
+/* DND */
+.widget-dnd {
+    color: @on_surface;
+    padding: 10px 12px;
+    border-bottom: 1px solid @outline_variant;
+    font-size: 12px;
+}
+
+.widget-dnd > switch {
+    background: transparent;
+    border-radius: 0px;
+    border: 1px solid @outline_variant;
+    min-height: 14px;
+    min-width: 28px;
+}
+
+.widget-dnd > switch:checked {
+    background: alpha(@primary, 0.15);
+    border-color: @primary;
+}
+
+.widget-dnd > switch slider {
+    background: @on_surface_variant;
+    border-radius: 0px;
+    min-width: 12px;
+    min-height: 12px;
+}
+
+.widget-dnd > switch:checked slider {
+    background: @primary;
+}
+
+/* MPRIS */
+.widget-mpris {
+    background: alpha(@surface_container, 0.5);
+    border-radius: 0px;
+    border: 1px solid @outline_variant;
+    border-left: 2px solid @primary;
+    margin: 6px 4px;
+    padding: 10px;
+}
+
+.widget-mpris-player {
+    color: @on_surface;
+    padding: 0;
+}
+
+.widget-mpris-title {
+    font-weight: bold;
+    font-size: 13px;
+    color: @on_surface;
+}
+
+.widget-mpris-subtitle {
+    color: @on_surface_variant;
+    font-size: 11px;
+}
+
+/* VOLUME & BACKLIGHT */
+.widget-volume,
+.widget-backlight {
+    color: @on_surface;
+    padding: 8px 12px;
+    border-bottom: 1px solid @outline_variant;
+    font-size: 12px;
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+    background: @surface_variant;
+    border-radius: 0px;
+    min-height: 3px;
+}
+
+.widget-volume highlight,
+.widget-backlight highlight {
+    background: @primary;
+    border-radius: 0px;
+}
+
+/* NOTIFICATION GROUP */
+.notification-group-headers {
+    color: @on_surface_variant;
+    font-size: 11px;
+    padding: 4px 8px;
+    letter-spacing: 2px;
+}
+
+.notification-group-icon {
+    color: @primary;
+}
+
+.control-center .control-center-list-placeholder {
+	opacity: 0;
+}
+
+
+scale > trough > slider {
+    opacity: 0;
+}

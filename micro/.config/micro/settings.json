@@ -1,0 +1,12 @@
+{
+    "colorscheme": "matugen",
+    "cursorline": true,
+    "statusformatl": "$(filename) $(modified)",
+    "statusformatr": "$(line):$(col)",
+    "softwrap": true,
+    "scrollbar": true,
+    "cursorline": true,
+    "statusline": true,
+    "tabstospaces": true,
+    "tabsize": 4
+}

@@ -1,0 +1,21 @@
+-- autostart.lua
+
+hl.on("hyprland.start", function()
+    hl.exec_cmd("nm-applet &")
+    hl.exec_cmd("waybar & awww-daemon")    
+    hl.exec_cmd("wl-paste --watch cliphist store")
+    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    hl.exec_cmd("swaync")
+    hl.exec_cmd("swayosd-server >/dev/null 2>&1")
+    hl.exec_cmd("hypridle")
+    hl.exec_cmd('sh -c "mpc idleloop player | while read; do ~/.config/scripts/mpd-notify.sh; done"')
+    hl.exec_cmd("mpd-mpris &")
+    hl.exec_cmd("numlockx on")
+    hl.exec_cmd("qs -c overview")
+
+   -- Launch apps into specific workspaces (silent)
+   -- hl.exec_cmd("[workspace special:term silent] kitty --class kittypad -e rmpc")
+    hl.exec_cmd("[workspace 1 silent] zen-browser --new-window")
+    hl.exec_cmd("[workspace 2 silent] kitty")
+    hl.exec_cmd("[workspace 9 silent] kitty --class kittypad -e rmpc")
+end)

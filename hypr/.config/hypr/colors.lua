@@ -1,0 +1,103 @@
+image = "/home/yugg755/Pictures/Wallpapers/0067.jpg"
+
+background = "rgba(161311ff)"
+
+error = "rgba(ffb4abff)"
+
+error_container = "rgba(93000aff)"
+
+inverse_on_surface = "rgba(33302eff)"
+
+inverse_primary = "rgba(71594eff)"
+
+inverse_surface = "rgba(e9e1deff)"
+
+on_background = "rgba(e9e1deff)"
+
+on_error = "rgba(690005ff)"
+
+on_error_container = "rgba(ffdad6ff)"
+
+on_primary = "rgba(3f2c22ff)"
+
+on_primary_container = "rgba(fcdccdff)"
+
+on_primary_fixed = "rgba(28180fff)"
+
+on_primary_fixed_variant = "rgba(574237ff)"
+
+on_secondary = "rgba(3b2e27ff)"
+
+on_secondary_container = "rgba(f4ded4ff)"
+
+on_secondary_fixed = "rgba(241913ff)"
+
+on_secondary_fixed_variant = "rgba(52443cff)"
+
+on_surface = "rgba(e9e1deff)"
+
+on_surface_variant = "rgba(ccc5c2ff)"
+
+on_tertiary = "rgba(432b1dff)"
+
+on_tertiary_container = "rgba(ffdbcaff)"
+
+on_tertiary_fixed = "rgba(2b160aff)"
+
+on_tertiary_fixed_variant = "rgba(5c4132ff)"
+
+outline = "rgba(968f8dff)"
+
+outline_variant = "rgba(4a4644ff)"
+
+primary = "rgba(dec0b2ff)"
+
+primary_container = "rgba(574237ff)"
+
+primary_fixed = "rgba(fcdccdff)"
+
+primary_fixed_dim = "rgba(dec0b2ff)"
+
+scrim = "rgba(000000ff)"
+
+secondary = "rgba(d7c2b9ff)"
+
+secondary_container = "rgba(52443cff)"
+
+secondary_fixed = "rgba(f4ded4ff)"
+
+secondary_fixed_dim = "rgba(d7c2b9ff)"
+
+shadow = "rgba(000000ff)"
+
+source_color = "rgba(60361dff)"
+
+surface = "rgba(161311ff)"
+
+surface_bright = "rgba(3c3837ff)"
+
+surface_container = "rgba(221f1dff)"
+
+surface_container_high = "rgba(2d2928ff)"
+
+surface_container_highest = "rgba(383432ff)"
+
+surface_container_low = "rgba(1e1b19ff)"
+
+surface_container_lowest = "rgba(100e0cff)"
+
+surface_dim = "rgba(161311ff)"
+
+surface_tint = "rgba(dec0b2ff)"
+
+surface_variant = "rgba(4a4644ff)"
+
+tertiary = "rgba(e6beabff)"
+
+tertiary_container = "rgba(5c4132ff)"
+
+tertiary_fixed = "rgba(ffdbcaff)"
+
+tertiary_fixed_dim = "rgba(e6beabff)"
+
+accent_hex = "#dec0b2"

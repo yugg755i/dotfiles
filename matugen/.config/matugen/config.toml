@@ -1,0 +1,79 @@
+[config]
+reload_apps = true
+
+[config.reload_apps_list]
+kitty = true
+gtk_theme = true
+yazi = true
+
+# ...
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.lua'
+# ...
+
+# ...
+[templates.hyprlock]
+input_path = '~/.config/matugen/templates/hyprlock.conf'
+output_path = '~/.config/hypr/colors.conf'
+# ...
+
+# ...
+[templates.rmpc]
+input_path = '~/.config/matugen/templates/rmpc.ron'
+output_path = '~/.config/rmpc/themes/matugen.ron'
+# ...
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/themes/Matugen.conf'
+post_hook = "kitty +kitten themes --reload-in=all Matugen"
+# ...
+
+# ...
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+# ...
+
+# ...
+[templates.waybar]
+input_path = '~/.config/matugen/templates/matugen-waybar.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+# ...
+
+# ...
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+# ...
+
+# ...
+[templates.swaync]
+input_path = './colors.css'
+output_path = "~/.config/swaync/colors.css"
+post_hook = "swaync-client -rs"
+# ...
+
+# ...
+[templates.swayosd]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/swayosd/colors.css'
+post_hook = "pkill swayosd-server; swayosd-server &"
+
+# ...
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/matugen-gtk.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/matugen-gtk.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+# ...
+
+# ...
+[templates.micro]
+input_path = '~/.config/matugen/templates/micro-colors.css'
+output_path = '~/.config/micro/micro-colors.css'
+# ...
