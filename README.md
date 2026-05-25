@@ -1,6 +1,6 @@
 # minimal cozy setup
 
-A cozy earthy Hyprland setup focused on muted colors, soft transparency, and a calm desktop experience.
+A cozy Hyprland setup focused on a calm desktop experience.
 
 Built to feel minimal, warm, distraction-free, and actually usable for daily work.
 
