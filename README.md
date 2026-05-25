@@ -1,4 +1,4 @@
-# forest rice
+# minimal cozy setup
 
 A cozy earthy Hyprland setup focused on muted colors, soft transparency, and a calm desktop experience.
 
