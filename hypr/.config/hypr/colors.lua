@@ -1,4 +1,4 @@
-image = "/home/yugg755/Pictures/Wallpapers/0067.jpg"
+image = "/home/yugg755/dotfiles/hypr/.config/hypr/modes/walls/forest.jpg"
 
 background = "rgba(161311ff)"
 

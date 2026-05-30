@@ -28,8 +28,9 @@ hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("bash ~/.config/rofi/powermenu.sh"))
 
 -- Wallpapers & theming
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("bash ~/.config/rofi/wallpaper.sh"))
-hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/rofi/matugen-theme.sh"))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/toggle-mode.sh"))
 hl.bind(mainMod .. " + ALT + SHIFT + S", hl.dsp.exec_cmd("bash ~/.config/rofi/vwallpaper.sh"))
+hl.bind(mainMod .. " + ALT + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/rofi/matugen-theme.sh"))
 
 -- Power modes
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("bash ~/.config/rofi/power-mode.sh"))

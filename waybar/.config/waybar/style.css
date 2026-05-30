@@ -1,14 +1,14 @@
 @import "/home/yugg755/.config/waybar/colors.css";
 
 * {
-    font-size: 13px;
+    font-size: 14px;
     min-height: 0;
     font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
 }
 
 /* ===== BAR ===== */
 window#waybar {
-    background-color: @surface;
+    background-color: alpha(@surface, 0.78);
     color: @on_surface;
 }
 
@@ -20,7 +20,7 @@ window#waybar {
 #backlight,
 #custom-power-mode,
 #mpd {
-    padding: 0 5px;
+    padding: 0 7px;
 }
 
 /* ===== WORKSPACES ===== */
@@ -31,12 +31,12 @@ window#waybar {
 #workspaces button {
     all: unset;
     padding: 0 14px;
-    color: @on_surface_variant;
+    color: alpha(@on_surface_variant, 0.60);
 }
 
 #workspaces button.active {
     color: @primary;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 #workspaces button:hover {
@@ -65,6 +65,8 @@ window#waybar {
     font-size: 13px;
     font-style: italic;
     padding: 0 10px;
+
+    color: alpha(@on_surface, 0.78);
 }
 
 #custom-lyrics.has-lyrics:hover {

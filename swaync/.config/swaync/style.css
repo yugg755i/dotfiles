@@ -13,7 +13,7 @@
 }
 
 .notification {
-    background: alpha(@surface, 0.88);
+    background: alpha(@surface, 0.78);
     color: @on_surface;
     border-radius: 0px;
     border: 1px solid @outline_variant;

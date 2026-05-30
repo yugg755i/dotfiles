@@ -18,7 +18,7 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 local terminal   = "kitty"
-local fileManager = "thunar"
+local fileManager = "nautilus"
 local menu       = "rofi -show drun"
 
 -------------------------------
@@ -52,8 +52,8 @@ hl.config({
     decoration = {
         rounding       = 0,
         rounding_power = 0,
-        active_opacity   = 0.90,
-        inactive_opacity = 0.85,
+        active_opacity   = 0.92,
+        inactive_opacity = 0.88,
         dim_inactive   = true,
         dim_strength   = 0.08,
         dim_special    = 0.4,
@@ -65,7 +65,7 @@ hl.config({
         },
         blur = {
             enabled          = true,
-            size             = 12,
+            size             = 5,
             passes           = 2,
             contrast         = 1.5,
             brightness       = 0.8,
@@ -243,4 +243,13 @@ hl.window_rule({
     rounding = 0,
 })
 
+hl.window_rule({
+    name = "battery1",
+    match = { class = "battery-popup" },
+    float = true,
+    center = true,
+    size = "500 300"
+})
 
+layerrule = blur, waybar
+layerrule = ignorezero, waybar

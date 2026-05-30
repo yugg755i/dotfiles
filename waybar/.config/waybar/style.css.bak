@@ -1,0 +1,94 @@
+@import "/home/yugg755/.config/waybar/colors.css";
+
+* {
+    font-size: 14px;
+    min-height: 0;
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+}
+
+/* ===== BAR ===== */
+window#waybar {
+    background-color: @surface;
+    color: @on_surface;
+}
+
+/* ===== MODULE SPACING ===== */
+#clock,
+#pulseaudio,
+#battery,
+#temperature,
+#backlight,
+#custom-power-mode,
+#mpd {
+    padding: 0 5px;
+}
+
+/* ===== WORKSPACES ===== */
+#workspaces {
+    padding: 0 10px;
+}
+
+#workspaces button {
+    all: unset;
+    padding: 0 14px;
+    color: @on_surface_variant;
+}
+
+#workspaces button.active {
+    color: @primary;
+    font-weight: 500;
+}
+
+#workspaces button:hover {
+    color: @on_surface;
+}
+
+/* ===== MUSIC ===== */
+#mpd {
+    color: @tertiary;
+}
+
+/* ===== CLOCK ===== */
+#custom-clock {
+    color: @secondary;
+    padding: 0 5px;
+}
+
+/* ===== TRAY ===== */
+#tray {
+    padding: 0 6px;
+}
+
+/* ===== LYRICS ===== */
+#custom-lyrics {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", sans-serif;
+    font-size: 13px;
+    font-style: italic;
+    padding: 0 10px;
+}
+
+#custom-lyrics.has-lyrics:hover {
+    opacity: 0.8;
+}
+
+#custom-lyrics.no-lyrics,
+#custom-lyrics.lyrics-hidden {
+    color: @outline;
+    font-size: 13;
+    padding: 0 10px;
+}
+
+#custom-clock.clock-hidden {
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+#battery.charging {
+    color: @primary;
+}
+
+#battery.critical {
+    color: @error;
+}
