@@ -1,9 +1,9 @@
 sw_volume: 100
 audio_device_state:1:PipeWire Output
 audio_device_state:1:Visualizer feed
-state: play
-current: 1
-time: 120.3
+state: pause
+current: 5
+time: 10.07
 random: 0
 repeat: 0
 single: 0
