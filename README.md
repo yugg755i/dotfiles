@@ -1,14 +1,10 @@
 ## personal-dotfiles
 
-my personal linux setup and configuration files.
-
----
+my personal linux setup and dotfiles.
 
 ## preview
 
 ![modes](./preview/modes.gif)
-
----
 
 ## components
 
@@ -29,8 +25,6 @@ my personal linux setup and configuration files.
 * **theming** → GTK + Kvantum
 * **utilities** → btop, Fastfetch
 
----
-
 ## features
 
 * dynamic color theming using matugen
@@ -39,8 +33,6 @@ my personal linux setup and configuration files.
 * lyrics integration through lrclib
 * media controls and notifications via swaync
 * power profiles for different usage scenarios
-
----
 
 ## structure
 
@@ -65,8 +57,6 @@ dotfiles/
 ├── yazi
 └── zathura
 ```
-
----
 
 ## installation
 
@@ -101,14 +91,14 @@ stow */
 * https://walle.theblank.club
 * https://github.com/dusklinux/images
 
----
-
 ## credits
 
 * waybar and rofi inspiration — https://github.com/martin-djakovic/dotfiles
 
----
-
 ## notes
 
 these dotfiles are built around my personal workflow and are shared as-is. some adjustments may be needed depending on your setup.
+
+## reuse
+
+feel free to borrow, copy, or steal whatever you find useful.
