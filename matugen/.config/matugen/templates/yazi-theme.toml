@@ -159,32 +159,20 @@ footer = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.
 
 rules = [
     # Images
-    { mime = "image/*", fg = "{{colors.on_surface.default.hex}}" },
+    { mime = "image/*", fg = "#f9e2af"},
 
     # Media
-    { mime = "{audio,video}/*", fg = "{{colors.tertiary.default.hex}}" },
+    { mime = "{audio,video}/*", fg = "#f9e2af" },
 
     # Archives
-    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "{{colors.primary_fixed.default.hex}}" },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
 
     # Documents
-    { mime = "application/{pdf,doc,rtf}", fg = "{{colors.secondary_fixed.default.hex}}" },
+    { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
 
     # Special files
-    { mime = "*", is = "orphan", bg = "{{colors.error_container.default.hex}}" },
-    { mime = "*", is = "exec", fg = "{{colors.on_error_container.default.hex}}" },
-
-    # Code / Text
-    { mime = "text/*", fg = "{{colors.on_surface.default.hex}}" },
-
-    # Executables
-    { mime = "*", is = "exec", fg = "{{colors.error.default.hex}}" },
-
-    # Broken symlinks
-    { mime = "*", is = "orphan", bg = "{{colors.error_container.default.hex}}" },
-
-    # Directories
-    { url = "*/", fg = "{{colors.surface_tint.default.hex}}" },
+    { url = "*", is = "orphan", bg = "{{colors.error_container.default.hex}}" },
+    { url = "*", is = "exec", fg = "{{colors.on_error_container.default.hex}}" },
 
     # Fallback
     { url = "*", fg = "{{colors.on_surface.default.hex}}" },

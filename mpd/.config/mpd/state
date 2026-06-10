@@ -1,11 +1,11 @@
 sw_volume: 100
 audio_device_state:1:PipeWire Output
 audio_device_state:1:Visualizer feed
-state: play
-current: 1
-time: 23.787
+state: pause
+current: 4
+time: 103.839
 random: 0
-repeat: 0
+repeat: 1
 single: 0
 consume: 0
 crossfade: 0
@@ -13,14 +13,18 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:Pink Floyd - The Dark Side of the Moon (1973)/01 - Speak to Me [E].flac
-1:Pink Floyd - The Dark Side of the Moon (1973)/02 - Breathe (In the Air).flac
-2:Pink Floyd - The Dark Side of the Moon (1973)/03 - On the Run.flac
-3:Pink Floyd - The Dark Side of the Moon (1973)/04 - Time.flac
-4:Pink Floyd - The Dark Side of the Moon (1973)/05 - The Great Gig in the Sky.flac
-5:Pink Floyd - The Dark Side of the Moon (1973)/06 - Money [E].flac
-6:Pink Floyd - The Dark Side of the Moon (1973)/07 - Us and Them.flac
-7:Pink Floyd - The Dark Side of the Moon (1973)/08 - Any Colour You Like.flac
-8:Pink Floyd - The Dark Side of the Moon (1973)/09 - Brain Damage.flac
-9:Pink Floyd - The Dark Side of the Moon (1973)/10 - Eclipse.flac
+0:00 - Lana Del Rey - Diet Mountain Dew.flac
+1:Girlfriend - Matthew Sweet/02 - Matthew Sweet - I've Been Waiting.flac
+2:Girlfriend - Matthew Sweet/03 - Matthew Sweet - Girlfriend.flac
+3:Girlfriend - Matthew Sweet/04 - Matthew Sweet - Looking at the Sun.flac
+4:Girlfriend - Matthew Sweet/06 - Matthew Sweet - Evangeline.flac
+5:Girlfriend - Matthew Sweet/07 - Matthew Sweet - Day For Night.flac
+6:Girlfriend - Matthew Sweet/08 - Matthew Sweet - Thought I Knew You.flac
+7:Girlfriend - Matthew Sweet/09 - Matthew Sweet - You Don't Love Me.flac
+8:Girlfriend - Matthew Sweet/10 - Matthew Sweet - I Wanted To Tell You.flac
+9:Girlfriend - Matthew Sweet/11 - Matthew Sweet - Don't Go.flac
+10:Girlfriend - Matthew Sweet/12 - Matthew Sweet - Your Sweet Voice.flac
+11:Girlfriend - Matthew Sweet/13 - Matthew Sweet - Does She Talk_.flac
+12:Girlfriend - Matthew Sweet/14 - Matthew Sweet - Holy War.flac
+13:Girlfriend - Matthew Sweet/15 - Matthew Sweet - Nothing Lasts.flac
 playlist_end

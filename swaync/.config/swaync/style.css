@@ -80,7 +80,7 @@
 }
 
 .control-center {
-    background: alpha(@surface, 0.90);
+    background: alpha(@surface, 0.82);
     border-radius: 0px;
     border: 1px solid @outline_variant;
     box-shadow: none;
@@ -157,7 +157,7 @@
 
 /* MPRIS */
 .widget-mpris {
-    background: alpha(@surface_container, 0.5);
+    background: alpha(@surface_container, 0.1);
     border-radius: 0px;
     border: 1px solid @outline_variant;
     border-left: 2px solid @primary;
