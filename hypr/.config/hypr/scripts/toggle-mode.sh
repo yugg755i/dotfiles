@@ -12,7 +12,7 @@ WALL_DIR="$HOME/.config/hypr/modes/walls"
 OPTIONS="󱢅 Evergreen
  Rainsong
 󰖔 Nocturne
-󰼰 Golden Hour
+󰼰:MasonInstallAll Golden Hour
  Mistveil"
 
 SELECTED=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "moods")
@@ -72,3 +72,7 @@ esac
 pkill waybar || true
 waybar >/dev/null 2>&1 &
 disown
+
+if [ -f "/tmp/focus-mode.state" ]; then
+  bash ~/.config/hypr/scripts/focus-mode.sh activate
+fi
