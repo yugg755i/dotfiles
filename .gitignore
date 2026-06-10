@@ -1,0 +1,38 @@
+# Fish generated state
+fish/.config/fish/fish_variables
+
+# Micro backups
+micro/.config/micro/backups/
+
+# Vim/Neovim swap files
+*.swp
+*.swo
+
+# Editor junk
+*~
+*.bak
+
+# macOS
+.DS_Store
+
+# Thumbnails
+.thumbs
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Local secrets (if you ever add any)
+.env
+.env.*
+
+# Generated caches
+.cache/
