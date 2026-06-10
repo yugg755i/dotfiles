@@ -93,7 +93,8 @@ stow */
 
 ## credits
 
-* waybar and rofi inspiration — https://github.com/martin-djakovic/dotfiles
+* waybar and rofi — https://github.com/martin-djakovic/dotfiles
+* Shaders from: https://github.com/snes19xx/surface-dots
 
 ## notes
 
