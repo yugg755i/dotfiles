@@ -1,0 +1,25 @@
+[opener]
+edit = [
+  { run = 'kitty nvim "$@"', block = true },
+]
+view-image = [
+  { run = 'imv "$@"', block = false },
+]
+play-video = [
+  { run = 'mpv "$@"', block = false },
+]
+play-audio = [
+  { run = 'mpc clear && mpc add "$(realpath "$1")" && mpc play', block = false },
+]
+pdf = [
+{ run = 'zathura "$@"', block = false },
+]
+[open]
+rules = [
+  { mime = "text/*", use = "edit" },
+  { mime = "application/json", use = "edit" },
+  { mime = "image/*", use = "view-image" },
+  { mime = "video/*", use = "play-video" },
+  { mime = "audio/*", use = "play-audio" },
+  { mime = "application/pdf", use = "pdf"},
+]

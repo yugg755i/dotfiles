@@ -159,32 +159,20 @@ footer = { fg = "#3b2e27", bg = "#d7c2b9" }
 
 rules = [
     # Images
-    { mime = "image/*", fg = "#e9e1de" },
+    { mime = "image/*", fg = "#f9e2af"},
 
     # Media
-    { mime = "{audio,video}/*", fg = "#e6beab" },
+    { mime = "{audio,video}/*", fg = "#f9e2af" },
 
     # Archives
-    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#fcdccd" },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
 
     # Documents
-    { mime = "application/{pdf,doc,rtf}", fg = "#f4ded4" },
+    { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
 
     # Special files
-    { mime = "*", is = "orphan", bg = "#93000a" },
-    { mime = "*", is = "exec", fg = "#ffdad6" },
-
-    # Code / Text
-    { mime = "text/*", fg = "#e9e1de" },
-
-    # Executables
-    { mime = "*", is = "exec", fg = "#ffb4ab" },
-
-    # Broken symlinks
-    { mime = "*", is = "orphan", bg = "#93000a" },
-
-    # Directories
-    { url = "*/", fg = "#dec0b2" },
+    { url = "*", is = "orphan", bg = "#93000a" },
+    { url = "*", is = "exec", fg = "#ffdad6" },
 
     # Fallback
     { url = "*", fg = "#e9e1de" },
