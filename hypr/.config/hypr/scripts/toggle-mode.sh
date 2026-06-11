@@ -12,7 +12,7 @@ WALL_DIR="$HOME/.config/hypr/modes/walls"
 OPTIONS="󱢅 Evergreen
  Rainsong
 󰖔 Nocturne
-󰼰:MasonInstallAll Golden Hour
+󰼰:Golden Hour
  Mistveil"
 
 SELECTED=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "moods")
