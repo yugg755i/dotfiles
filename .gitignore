@@ -1,9 +1,3 @@
-# Fish generated state
-fish/.config/fish/fish_variables
-
-# Micro backups
-micro/.config/micro/backups/
-
 # Vim/Neovim swap files
 *.swp
 *.swo
@@ -36,3 +30,27 @@ temp/
 
 # Generated caches
 .cache/
+
+# backups
+*.bak.*
+*.b
+
+# micro
+micro/.config/micro/backups/
+micro/.config/micro/buffers/history
+
+# fish
+fish/.config/fish/fish_variables
+
+# mpd state
+mpd/.config/mpd/database
+mpd/.config/mpd/state
+mpd/.config/mpd/sticker.sql
+
+# generated theme files
+matugen/.config/matugen/colors.css
+matugen/.config/matugen/colors.json
+
+# wallpaper state
+hypr/.config/hypr/current_wallpaper
+hypr/.config/hypr/current_video_wallpaper

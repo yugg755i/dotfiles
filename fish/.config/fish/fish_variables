@@ -1,8 +1,0 @@
-# This file contains fish universal variable definitions.
-# VERSION: 3.0
-SETUVAR __fish_initialized:4300
-SETUVAR __fish_webconfig_theme_notification:set\x2dtheme\x2dv1\x2d\x231
-SETUVAR fish_color_host:brmagenta
-SETUVAR fish_color_user:brblue
-SETUVAR fish_greeting:
-SETUVAR fish_user_paths:/home/yugg755/\x2elocal/bin
