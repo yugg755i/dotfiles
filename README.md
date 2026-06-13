@@ -2,9 +2,20 @@
 
 my personal linux setup and dotfiles.
 
-## preview
+## contents
 
-![modes](./preview/modes.gif)
+- [preview](#screenshots)
+- [components](#components)
+- [structure](#structure)
+- [installation](#installation)
+- [wallpaper sources](#wallpaper-sources)
+- [credits](#credits)
+- [notes](#notes)
+- [reuse](#reuse)
+  
+## screenshots
+
+![modes](./screenshots/forest-screenshot.png)
 
 ## components
 
@@ -16,23 +27,14 @@ my personal linux setup and dotfiles.
 * **launcher** → Rofi
 * **notifications** → SwayNC
 * **osd** → SwayOSD
-* **editor** → Neovim / VSCode
+* **editor** → Neovim
 * **file manager** → Yazi + Nautilus
 * **music** → MPD + rmpc
 * **pdf viewer** → Zathura
 * **colors** → Matugen
 * **wallpaper** → awww
-* **theming** → GTK + Kvantum
+* **theming** → GTK
 * **utilities** → btop, Fastfetch
-
-## features
-
-* dynamic color theming using matugen
-* multiple environment modes with matching wallpapers and ambience
-* rofi-based wallpaper picker
-* lyrics integration through lrclib
-* media controls and notifications via swaync
-* power profiles for different usage scenarios
 
 ## structure
 
@@ -48,6 +50,7 @@ dotfiles/
 ├── matugen
 ├── micro
 ├── mpd
+├── nvim
 ├── rmpc
 ├── rofi
 ├── scripts
@@ -55,7 +58,8 @@ dotfiles/
 ├── swayosd
 ├── waybar
 ├── yazi
-└── zathura
+├── zathura
+└── screenshots
 ```
 
 ## installation
