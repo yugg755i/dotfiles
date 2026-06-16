@@ -4,7 +4,8 @@ local mainMod = "SUPER"
 
 -- === Application Launchers ===
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("helium-browser"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
+hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd("helium-browser"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("kitty -e yazi"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("kitty --class kittypad -e rmpc"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("nautilus"))

@@ -35,8 +35,8 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 -----------------------
 hl.config({
 	general = {
-		gaps_in = 3,
-		gaps_out = 5,
+		gaps_in = 1,
+		gaps_out = 2,
 		border_size = 1,
 		col = {
 			active_border = { colors = { primary, secondary }, angle = 45 },

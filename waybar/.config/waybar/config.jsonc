@@ -35,7 +35,6 @@
 
 	"custom/clock": {
     		"exec": "date +'%H:%M %A, %b %d' | awk '{print tolower($0)}'",
-    		 "on-click": "gsimplecal",
     		"interval": 3,
     		"format": "<span color='#cec2db'> {}</span>"
 	},
