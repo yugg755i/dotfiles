@@ -35,6 +35,12 @@ temp/
 *.bak.*
 *.b
 
+# GTK bookmarks (local)
+gtk-3.0/.config/gtk-3.0/bookmarks
+
+# MPD runtime files
+mpd/.config/mpd/pid
+
 # micro
 micro/.config/micro/backups/
 micro/.config/micro/buffers/history
