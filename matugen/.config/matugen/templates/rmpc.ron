@@ -3,15 +3,13 @@
 #![enable(unwrap_variant_newtypes)]
 (
     default_album_art_path: None,
-    show_song_table_header: true,
-    draw_borders: true,
     format_tag_separator: " | ",
     browser_column_widths: [20, 38, 42],
     background_color: None,
     text_color: Some("{{ colors.secondary.default.hex }}"),
     header_background_color: None,
-    modal_background_color: None,
-    modal_backdrop: false,
+    modal_background_color: Some("{{ colors.surface_container.default.hex }}"),
+    modal_backdrop: true,
     preview_label_style: (fg: "{{ colors.primary.default.hex }}"),
     preview_metadata_group_style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"),
     tab_bar: (
@@ -20,17 +18,18 @@
     ),
     highlighted_item_style: (fg: "{{ colors.secondary.default.hex }}", modifiers: "Bold"),
     current_item_style: (fg: "{{ colors.secondary.default.hex }}", bg: "{{ colors.inverse_primary.default.hex }}", modifiers: "Bold"),
-    borders_style: (fg: "{{ colors.secondary.default.hex }}"),
+    borders_style: (fg: "{{ colors.outline_variant.default.hex }}"),
     highlight_border_style: (fg: "{{ colors.secondary.default.hex }}"),
     symbols: (
-        song: "S",
-        dir: "D",
-        playlist: "P",
-        marker: "M",
+        song: "",
+        dir: "",
+        playlist: "",
+        marker: "",
         ellipsis: "...",
-        song_style: None,
-        dir_style: None,
-        playlist_style: None,
+        song_style: (fg: "{{ colors.primary.default.hex }}"),
+        dir_style: (fg: "{{ colors.tertiary.default.hex }}"),
+        playlist_style: (fg: "{{ colors.secondary.default.hex }}"),
+        marker_style: (fg: "{{ colors.error.default.hex }}", modifiers: "Bold"),
     ),
     level_styles: (
         info: (fg: "blue", bg: "black"),
@@ -42,7 +41,7 @@
     progress_bar: (
         symbols: ["[", "-", ">", " ", "]"],
         track_style: (
-            fg: "{{ colors.on_secondary.default.hex }}",
+            fg: "{{ colors.outline_variant.default.hex }}",
         ),
         elapsed_style: (
             fg: "{{ colors.secondary.default.hex }}",
@@ -54,7 +53,7 @@
     ),
     scrollbar: (
         symbols: ["│", "█", "▲", "▼"],
-        track_style: (fg: "{{ colors.secondary.default.hex }}"),
+        track_style: (fg: "{{ colors.outline_variant.default.hex }}"),
         ends_style: (fg: "{{ colors.secondary_fixed.default.hex }}"),
         thumb_style: (fg: "{{ colors.primary.default.hex }}"),
     ),
@@ -65,6 +64,7 @@
                 style: (fg: "{{ colors.primary_fixed.default.hex }}"),
                 default: (kind: Text("Unknown"), style: (fg: "{{ colors.primary_fixed.default.hex }}"))
             ),
+            label_prop: (kind: Text("Artist"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
             width: "20%",
         ),
         (
@@ -73,96 +73,188 @@
                 style: (fg: "{{ colors.primary.default.hex }}"),
                 default: (kind: Text("Unknown"), style: (fg: "{{ colors.primary_fixed.default.hex }}"))
             ),
+            label_prop: (kind: Text("Title"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
             width: "35%",
         ),
         (
             prop: (kind: Property(Album), style: (fg: "{{ colors.primary_fixed.default.hex }}"),
                 default: (kind: Text("Unknown Album"), style: (fg: "{{ colors.primary_fixed.default.hex }}"))
             ),
+            label_prop: (kind: Text("Album"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
             width: "30%",
         ),
         (
             prop: (kind: Property(Duration), style: (fg: "{{ colors.primary.default.hex }}"),
                 default: (kind: Text("-"), style: (fg: "{{ colors.primary_fixed.default.hex }}"))
             ),
+            label_prop: (kind: Text("Duration"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
             width: "15%",
             alignment: Right,
         ),
     ],
-    components: {},
     layout: Split(
-    direction: Vertical,
-    panes: [
-        (
-            pane: Pane(Header),
-            size: "2",
-        ),
-        (
-            pane: Pane(Tabs),
-            size: "3",
-        ),
-        (
-            pane: Pane(TabContent),
-            size: "100%",
-        ),
-        (
-            pane: Pane(ProgressBar),
-            size: "1",
-        ),
-    ],
-),
-    header: (
-        rows: [
+        direction: Vertical,
+        panes: [
             (
-                left: [
-                    (kind: Text("["), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
-                    (
-                      kind: Property(Status(StateV2(playing_label: "Playing", paused_label: "Paused", stopped_label: "Stopped"))),
-                      style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")
-                    ),
-                    (kind: Text("]"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"))
-                ],
-                center: [
-                    (kind: Property(Song(Title)), style: (modifiers: "Bold"),
-                        default: (kind: Text("No Song"), style: (modifiers: "Bold"))
-                    )
-                ],
-                right: [
-                    (kind: Property(Widget(ScanStatus)), style: (fg: "{{ colors.primary.default.hex }}")),
-                    (kind: Property(Widget(Volume)), style: (fg: "{{ colors.primary.default.hex }}"))
-                ]
+                size: "4",
+                borders: "ALL",
+                border_symbols: Inherited(parent: Rounded, bottom_left: "├", bottom_right: "┤"),
+                pane: Split(
+                    direction: Horizontal,
+                    panes: [
+                        (
+                            size: "35",
+                            pane: Component("header_left"),
+                        ),
+                        (
+                            size: "100%",
+                            pane: Component("header_center"),
+                        ),
+                        (
+                            size: "35",
+                            pane: Component("header_right"),
+                        ),
+                    ],
+                ),
             ),
             (
-                left: [
-                    (kind: Property(Status(Elapsed))),
-                    (kind: Text(" / ")),
-                    (kind: Property(Status(Duration))),
-                    (kind: Text(" (")),
-                    (kind: Property(Status(Bitrate))),
-                    (kind: Text(" kbps)"))
-                ],
-                center: [
-                    (kind: Property(Song(Artist)), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"),
-                        default: (kind: Text("Unknown"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"))
-                    ),
-                    (kind: Text(" - ")),
-                    (kind: Property(Song(Album)),
-                        style: (fg: "{{ colors.primary.default.hex }}"),
-                        default: (kind: Text("Unknown Album"))
-                    )
-                ],
-                right: [
-                    (
-                        kind: Property(Widget(States(
-                            active_style: (fg: "{{ colors.primary.default.hex }}", modifiers: "Bold"),
-                            separator_style: (fg: "{{ colors.primary.default.hex }}")))
+                pane: Pane(Tabs),
+                size: "3",
+                borders: "LEFT | RIGHT | BOTTOM",
+                border_symbols: Rounded,
+            ),
+            (
+                pane: Pane(TabContent),
+                size: "100%",
+            ),
+            (
+                size: "3",
+                pane: Split(
+                    direction: Horizontal,
+                    panes: [
+                        (
+                            size: "12",
+                            borders: "ALL",
+                            border_symbols: Inherited(parent: Rounded, top_right: "┬", bottom_right: "┴"),
+                            pane: Component("input_mode"),
                         ),
-                        style: (fg: "{{ colors.secondary_fixed_dim.default.hex }}")
-                    ),
-                ]
+                        (
+                            size: "100%",
+                            borders: "TOP | BOTTOM | RIGHT",
+                            border_symbols: Rounded,
+                            border_title: [
+                                (kind: Text(" ")),
+                                (kind: Property(Status(QueueLength()))),
+                                (kind: Text(" tracks · ")),
+                                (kind: Property(Status(QueueTimeTotal()))),
+                                (kind: Text(" total ")),
+                            ],
+                            border_title_alignment: Right,
+                            pane: Pane(ProgressBar),
+                        ),
+                    ]
+                ),
             ),
         ],
     ),
+    components: {
+        "input_mode": Pane(Property(
+            content: [
+                (kind: Transform(Replace(content: (kind: Property(Status(InputMode()))), replacements: [
+                    (match: "Normal", replace: (kind: Text(" NORMAL "), style: (fg: "{{ colors.on_secondary.default.hex }}", bg: "{{ colors.secondary.default.hex }}", modifiers: "Bold"))),
+                    (match: "Insert", replace: (kind: Text(" INSERT "), style: (fg: "{{ colors.on_secondary.default.hex }}", bg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"))),
+                ])))
+            ],
+            align: Center,
+        )),
+        // --- Header, rebuilt with the current component/layout system ---
+        // (theme.header no longer exists; header content is composed from
+        // Property panes, same pattern rmpc's own default theme uses)
+        "header_left": Split(
+            direction: Vertical,
+            panes: [
+                (size: "1", pane: Component("header_state")),
+                (size: "1", pane: Component("header_elapsed_bitrate")),
+            ],
+        ),
+        "header_center": Split(
+            direction: Vertical,
+            panes: [
+                (size: "1", pane: Component("header_title")),
+                (size: "1", pane: Component("header_artist_album")),
+            ],
+        ),
+        "header_right": Split(
+            direction: Vertical,
+            panes: [
+                (size: "1", pane: Component("header_scan_volume")),
+                (size: "1", pane: Component("header_states")),
+            ],
+        ),
+        "header_state": Pane(Property(
+            content: [
+                (kind: Text("["), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
+                (
+                    kind: Property(Status(StateV2(playing_label: "Playing", paused_label: "Paused", stopped_label: "Stopped"))),
+                    style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")
+                ),
+                (kind: Text("]"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold")),
+            ],
+            align: Left,
+        )),
+        "header_title": Pane(Property(
+            content: [
+                (kind: Property(Song(Title)), style: (modifiers: "Bold"),
+                    default: (kind: Text("No Song"), style: (modifiers: "Bold"))
+                )
+            ],
+            align: Center,
+        )),
+        "header_scan_volume": Pane(Property(
+            content: [
+                (kind: Property(Widget(ScanStatus)), style: (fg: "{{ colors.primary.default.hex }}")),
+                (kind: Text(" ")),
+                (kind: Property(Widget(Volume)), style: (fg: "{{ colors.primary.default.hex }}")),
+            ],
+            align: Right,
+        )),
+        "header_elapsed_bitrate": Pane(Property(
+            content: [
+                (kind: Property(Status(Elapsed))),
+                (kind: Text(" / ")),
+                (kind: Property(Status(Duration))),
+                (kind: Text(" (")),
+                (kind: Property(Status(Bitrate))),
+                (kind: Text(" kbps)")),
+            ],
+            align: Left,
+        )),
+        "header_artist_album": Pane(Property(
+            content: [
+                (kind: Property(Song(Artist)), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"),
+                    default: (kind: Text("Unknown"), style: (fg: "{{ colors.tertiary.default.hex }}", modifiers: "Bold"))
+                ),
+                (kind: Text(" - ")),
+                (kind: Property(Song(Album)),
+                    style: (fg: "{{ colors.primary.default.hex }}"),
+                    default: (kind: Text("Unknown Album"))
+                ),
+            ],
+            align: Center,
+        )),
+        "header_states": Pane(Property(
+            content: [
+                (
+                    kind: Property(Widget(States(
+                        active_style: (fg: "{{ colors.error.default.hex }}", modifiers: "Bold"),
+                        separator_style: (fg: "{{ colors.outline.default.hex }}")))
+                    ),
+                    style: (fg: "{{ colors.secondary_fixed_dim.default.hex }}")
+                ),
+            ],
+            align: Right,
+        )),
+    },
     browser_song_format: [
         (
             kind: Group([

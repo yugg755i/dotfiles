@@ -31,11 +31,13 @@
             ".":       VolumeUp,
             "<Tab>":   NextTab,
             "<S-Tab>": PreviousTab,
-            "1":       SwitchToTab("Playing"),
-            "4":       SwitchToTab("Dir"),
-            "3":       SwitchToTab("Lists"),
-            "2":       SwitchToTab("Find"),
-            "5":       SwitchToTab("Lyrics"),
+            "1": SwitchToTab("Playing"),
+            "2": SwitchToTab("Artists"),
+            "3": SwitchToTab("Albums"),
+            "4": SwitchToTab("Playlists"),
+            "5": SwitchToTab("Directories"),
+            "6": SwitchToTab("Search"),
+            "7": SwitchToTab("Lyrics"),
             "q":       Quit,
             ">":       NextTrack,
             "p":       TogglePause,
@@ -121,18 +123,32 @@
                 ],
             ),
         ),
+
         (
-            name: "Find",
-            pane: Pane(Search),
+            name: "Artists",
+            pane: Pane(Artists),
         ),
+
         (
-            name: "Lists",
+            name: "Albums",
+            pane: Pane(Albums),
+        ),
+
+        (
+            name: "Playlists",
             pane: Pane(Playlists),
         ),
+
         (
-            name: "Dir",
+            name: "Directories",
             pane: Pane(Directories),
         ),
+
+        (
+            name: "Search",
+            pane: Pane(Search),
+        ),
+
         (
             name: "Lyrics",
             pane: Split(
