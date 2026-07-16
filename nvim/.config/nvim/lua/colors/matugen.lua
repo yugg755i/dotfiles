@@ -4,10 +4,10 @@ local base16 = require("mini.base16")
 local shared = require("colors._shared")
 
 local diff_palette = {
-	add = { bg = "#4e4256", fg = "#edddf6" },
+	add = { bg = "#4e4256", fg = "#eeddf5" },
 	delete = { bg = "#93000a", fg = "#ffdad6" },
 	change = { bg = "#4c4452" },
-	text = { bg = "#4a454d" },
+	text = { bg = "#4b454d" },
 }
 
 -- Base16 palette from matugen
@@ -21,12 +21,12 @@ local palette = {
 	base06 = "#f2eff0", -- light foreground
 	base07 = "#fdfdfd", -- lightest
 	base08 = "#ffb4ab", -- red (variables, errors)
-	base09 = "#b5a8b7", -- orange
-	base0A = "#cdc4ce", -- yellow
+	base09 = "#b6a7b7", -- orange
+	base0A = "#cdc3ce", -- yellow
 	base0B = "#d1c1d9", -- green (strings)
-	base0C = "#ebdef0", -- cyan (operators)
-	base0D = "#cfc2d4", -- blue (functions)
-	base0E = "#edddf6", -- purple (keywords)
+	base0C = "#ecdef0", -- cyan (operators)
+	base0D = "#cfc2d3", -- blue (functions)
+	base0E = "#eeddf5", -- purple (keywords)
 	base0F = "#ffcbc5", -- brown
 }
 
@@ -50,13 +50,13 @@ local colors = {
 	one_bg = "#141314",
 	grey = "#484648",
 	red = "#ffb4ab",
-	pink = "#edddf6",
+	pink = "#eeddf5",
 	green = "#d1c1d9",
-	blue = "#cfc2d4",
-	orange = "#b5a8b7",
+	blue = "#cfc2d3",
+	orange = "#b6a7b7",
 	cyan = "#f6f0f8",
-	teal = "#ebdef0",
-	purple = "#e2c9f1",
+	teal = "#ecdef0",
+	purple = "#e4c9ef",
 	lavender = "#ffffff",
 }
 
