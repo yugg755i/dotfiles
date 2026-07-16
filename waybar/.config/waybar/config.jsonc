@@ -34,7 +34,7 @@
     },
 
 	"custom/clock": {
-    		"exec": "date +'%H:%M %A, %b %d' | awk '{print tolower($0)}'",
+    		"exec": "date +'%I:%M %p %A, %b %d' | awk '{print tolower($0)}'",
     		"interval": 3,
     		"format": "<span color='#cec2db'> {}</span>"
 	},
@@ -86,12 +86,6 @@
         "format": "<span color='#49454e'>| </span><span color='#cec2db'></span><span color='#958e99'>{}</span>"
     },
 
-    "custom/mode": {
-        "exec": "~/.config/hypr/scripts/mode.sh",
-        "return-type": "json",
-        "interval": 1
-    },
-    
     "backlight": {
         "format": "<span color='#49454e'>| </span><span color='#cec2db'>mon</span> <span color='#958e99'>{percent}%</span>",
         "tooltip": false
