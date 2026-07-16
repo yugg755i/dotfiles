@@ -1,0 +1,88 @@
+configuration {
+    /* Use regular fuzzy matching instead of rigid prefix strings */
+    matching: "fuzzy";
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: false;
+    
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+}
+
+@theme "/dev/null"
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    bg: @surface-container-lowest;
+    bg-alt: @surface-container;
+    fg: @on-surface;
+    accent: @primary;
+
+    background-color: rgba(15, 13, 18, 0.92);
+
+    color: @fg;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    /* Widened significantly to prevent cutting off long movie and directory titles */
+    width: 850px; 
+    border: 1px solid;
+    border-color: rgba(203, 196, 207, 0.12);
+    border-radius: 8px;
+    anchor: center;
+    location: center;
+}
+
+inputbar {
+    children: [prompt, entry];
+    border: 0 0 1px 0;
+    border-color: @outline-variant;
+    margin: 14px;
+    padding: 0 0 10px 0;
+}
+
+prompt {
+    text-color: @accent;
+    font: "JetBrainsMono Nerd Font Bold 14";
+    margin: 0 10px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Search library...";
+    placeholder-color: rgba(203, 196, 207, 0.3);
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    /* Expanded lines to show a larger cross-section of files */
+    lines: 12; 
+    margin: 0px 14px 14px 14px;
+    fixed-height: false;
+}
+
+element {
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: @fg;
+}
+
+/* Give selected rows a subtle, clean background tint instead of completely transparent */
+element selected {
+    background-color: rgba(212, 187, 252, 0.08);
+}
+
+element-text selected {
+    color: @primary;
+}

@@ -33,7 +33,8 @@ configuration {
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
 /*	combi-modi: "window,run";*/
-/*	matching: "normal";*/
+drun-match-fields: "name";
+matching: "prefix";
 /*	tokenize: true;*/
 /*	m: "-5";*/
 /*	filter: ;*/

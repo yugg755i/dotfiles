@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
-
 WALL_DIR="$HOME/Pictures/Wallpapers"
 
 # pick wallpaper with thumbnails
@@ -48,6 +47,7 @@ else
   matugen image "$SELECTED_PATH" -m dark -t scheme-neutral --prefer darkness
 fi
 
+pkill mpvpaper 2>/dev/null || true
 # reload waybar
 pkill waybar || true
 waybar &
