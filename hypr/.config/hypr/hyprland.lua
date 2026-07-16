@@ -164,8 +164,9 @@ hl.gesture({
 
 -- Per-device config
 hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
+	name = "logitech-wireless-receiver-mouse",
+	accel_profile = "flat",
+	sensitivity = 0,
 })
 
 ------------------------------
@@ -282,3 +283,7 @@ end)
 ---- LAYER RULES ----
 ------------------------------
 hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
+hl.layer_rule({
+	match = { namespace = "mpvpaper" },
+	above_lock = true,
+})

@@ -5,7 +5,7 @@ local mainMod = "SUPER"
 -- === Application Launchers ===
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
-hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd("helium-browser"))
+hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd("zen-browser --blank-window"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("kitty -e yazi"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("kitty --class kittypad -e rmpc"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("nautilus"))
@@ -19,12 +19,13 @@ hl.bind(
 hl.bind(mainMod .. " + CTRL + E", hl.dsp.exec_cmd("loginctl terminate-session $XDG_SESSION_ID"))
 hl.bind(mainMod .. " + SHIFT + ALT + W", hl.dsp.exec_cmd("kitty -e nmtui"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("kitty -e btop"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("kitty --class floatterm -e impala"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("kitty --class floatterm -e bluetui"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("bash ~/hypr-modules/wifi.sh"))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("bash ~/hypr-modules/bluetooth.sh"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("localsend"))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("kitty -e nvim"))
 hl.bind(mainMod .. " + ALT + F", hl.dsp.exec_cmd("~/.config/hypr/scripts/focus-mode.sh toggle"))
+hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd("bash ~/.config/rofi/rofi-movies.sh"))
 
 -- Special Workspace (scratchpad terminal)
 hl.bind(mainMod .. " + grave", hl.dsp.workspace.toggle_special("term"))
@@ -37,6 +38,7 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("bash ~/.config/rofi/wallpape
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/toggle-mode.sh"))
 hl.bind(mainMod .. " + ALT + SHIFT + S", hl.dsp.exec_cmd("bash ~/.config/rofi/vwallpaper.sh"))
 hl.bind(mainMod .. " + ALT + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/rofi/matugen-theme.sh"))
+hl.bind(mainMod .. " + ALT + SHIFT + L", hl.dsp.exec_cmd("~/.config/hypr/scripts/lock-mode-select.sh"))
 
 -- Power modes
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("bash ~/.config/rofi/power-mode.sh"))
@@ -142,8 +144,8 @@ hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.window.move({ monitor = "r" }))
 -- === Workspace Navigation ===
 hl.bind(mainMod .. " + Page_Down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + Page_Up", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + CTRL + down", hl.dsp.window.move({ workspace = "e+1" }))
 hl.bind(mainMod .. " + CTRL + up", hl.dsp.window.move({ workspace = "e-1" }))
 hl.bind(mainMod .. " + CTRL + U", hl.dsp.window.move({ workspace = "e+1" }))
@@ -198,7 +200,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- === System Controls ===
 hl.bind(mainMod .. " + SHIFT + grave", hl.dsp.exec_cmd("dpms toggle"))
-hl.bind(mainMod .. " + ALT + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + ALT + CTRL + L", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/lock.sh"))
 
 -- === Screenshots ===
 hl.bind(
