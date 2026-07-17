@@ -4,23 +4,38 @@ my personal linux setup and dotfiles.
 
 ## contents
 
-- [preview](#screenshots)
+- [screenshots](#screenshots)
 - [components](#components)
 - [structure](#structure)
+- [requirements](#requirements)
 - [installation](#installation)
-- [wallpaper sources](#wallpaper-sources)
+- [keybinds](#keybinds)
+- [shaders](#shaders)
+- [wallpaper](#wallpaper)
 - [credits](#credits)
 - [notes](#notes)
 - [reuse](#reuse)
-  
-## screenshots
 
-![modes](./screenshots/forest-screenshot.png)
+## Screenshots
+
+<p align="center">
+  <img src="./screenshots/modes.gif">
+</p>
+
+<p align="center">
+  <img src="./screenshots/neovim.png" width="49%">
+  <img src="./screenshots/yazi.png" width="49%">
+</p>
+
+<p align="center">
+  <img src="./screenshots/rmpc.png" width="49%">
+  <img src="./screenshots/swaync.png" width="49%">
+</p>
 
 ## components
 
 * **os** → Arch Linux
-* **wm** → Hyprland
+* **wm** → Hyprland 0.55+ (Lua configuration)
 * **terminal** → Kitty
 * **shell** → Fish
 * **bar** → Waybar
@@ -62,7 +77,17 @@ dotfiles/
 └── screenshots
 ```
 
+## requirements
+
+- Arch Linux (or another Arch-based distro)
+- GNU Stow
+- Hyprland 0.55+ (Lua configuration)
+
 ## installation
+
+> [!NOTE]
+> Some configs contain hardcoded paths and assumptions about my setup.
+> I recommend copying only the configs you want and adapting them to your own system instead of applying the entire repository.
 
 ### clone the repository
 
@@ -84,25 +109,60 @@ aur packages:
 * `rofi-wayland`
 * nerd fonts (`ttf-jetbrains-mono-nerd`)
 
-### apply dotfiles using stow
+### applying configs
+
+I don't recommend applying the entire repository with `stow */`, especially if you're new to Hyprland.
+
+Instead, copy or stow only the components you want and adapt them to your setup.
+
+For example:
 
 ```bash
-stow */
+stow kitty
+stow waybar
+stow yazi
 ```
 
-## wallpaper sources
+## keybinds
+
+```text
+SUPER + Shift + S    Wallpaper Picker
+SUPER + Shift + A    Environment Modes
+SUPER + Shift + P    Power Profiles
+SUPER + Alt + M      Movie Launcher
+SUPER + M            rmpc
+SUPER + E            Yazi
+SUPER + N            Notification Center
+SUPER + Tab          Workspace Overview
+SUPER + X            Power Menu
+```
+See [`hypr/.config/hypr/binds.lua`](./hypr/.config/hypr/binds.lua) for the complete list.
+
+## shaders
+
+Shader configuration is located in `hypr/shader.lua`.
+
+```text
+Alt + C              CRT Mode
+SUPER + D            Reading Mode
+SUPER + Alt + N      Night Light
+SUPER + Alt + S      Disable All Shaders
+```
+
+## wallpaper
 
 * https://walle.theblank.club
 * https://github.com/dusklinux/images
+* [current wallpaper](https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-1yFDsklbtBU)
 
 ## credits
 
-* waybar and rofi — https://github.com/martin-djakovic/dotfiles
-* Shaders from: https://github.com/snes19xx/surface-dots
+* waybar and rofi: https://github.com/martin-djakovic/dotfiles
+* Shaders: https://github.com/snes19xx/surface-dots
 
 ## notes
 
-these dotfiles are built around my personal workflow and are shared as-is. some adjustments may be needed depending on your setup.
+These dotfiles are built around my personal workflow and are shared as-is. They are intended as a reference or starting point.
 
 ## reuse
 
