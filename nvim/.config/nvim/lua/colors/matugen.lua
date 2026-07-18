@@ -4,10 +4,10 @@ local base16 = require("mini.base16")
 local shared = require("colors._shared")
 
 local diff_palette = {
-	add = { bg = "#4e4256", fg = "#eeddf5" },
+	add = { bg = "#4a4458", fg = "#e8def8" },
 	delete = { bg = "#93000a", fg = "#ffdad6" },
-	change = { bg = "#4c4452" },
-	text = { bg = "#4b454d" },
+	change = { bg = "#494453" },
+	text = { bg = "#49454e" },
 }
 
 -- Base16 palette from matugen
@@ -16,17 +16,17 @@ local palette = {
 	base01 = "#141314", -- lighter background
 	base02 = "#141314", -- selection
 	base03 = "#484648", -- comments, line numbers
-	base04 = "#cac5c7", -- dark foreground
+	base04 = "#c9c5c7", -- dark foreground
 	base05 = "#e6e1e3", -- foreground
 	base06 = "#f2eff0", -- light foreground
 	base07 = "#fdfdfd", -- lightest
 	base08 = "#ffb4ab", -- red (variables, errors)
-	base09 = "#b6a7b7", -- orange
-	base0A = "#cdc3ce", -- yellow
-	base0B = "#d1c1d9", -- green (strings)
-	base0C = "#ecdef0", -- cyan (operators)
-	base0D = "#cfc2d3", -- blue (functions)
-	base0E = "#eeddf5", -- purple (keywords)
+	base09 = "#b1a8b8", -- orange
+	base0A = "#cac4cf", -- yellow
+	base0B = "#ccc2db", -- green (strings)
+	base0C = "#e7dff2", -- cyan (operators)
+	base0D = "#cbc3d5", -- blue (functions)
+	base0E = "#e8def8", -- purple (keywords)
 	base0F = "#ffcbc5", -- brown
 }
 
@@ -44,19 +44,19 @@ vim.g.colors_name = "matugen"
 -- Custom highlight colors
 local colors = {
 	white = "#e6e1e3",
-	darker_black = "#211f21",
+	darker_black = "#201f21",
 	black = "#131313",
 	black2 = "#141314",
 	one_bg = "#141314",
 	grey = "#484648",
 	red = "#ffb4ab",
-	pink = "#eeddf5",
-	green = "#d1c1d9",
-	blue = "#cfc2d3",
-	orange = "#b6a7b7",
-	cyan = "#f6f0f8",
-	teal = "#ecdef0",
-	purple = "#e4c9ef",
+	pink = "#e8def8",
+	green = "#ccc2db",
+	blue = "#cbc3d5",
+	orange = "#b1a8b8",
+	cyan = "#f5f1f9",
+	teal = "#e7dff2",
+	purple = "#d9c9f4",
 	lavender = "#ffffff",
 }
 
@@ -107,9 +107,16 @@ end
 
 apply_custom_highlights()
 
+local group = vim.api.nvim_create_augroup("MatugenTheme", { clear = true })
+
 vim.api.nvim_create_autocmd("ColorScheme", {
+	group = group,
 	pattern = "*",
-	callback = apply_custom_highlights,
+	callback = function()
+		if vim.g.colors_name == "matugen" then
+			apply_custom_highlights()
+		end
+	end,
 })
 
 return {

@@ -1,3 +1,5 @@
+local theme = require("config.theme").current
+
 return {
   {
     "nvim-mini/mini.base16",
@@ -9,7 +11,11 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = function()
-        require("colors.matugen")
+        if theme == "matugen" then
+          require("colors.matugen")
+        else
+          vim.cmd.colorscheme(theme)
+        end
       end,
     },
   },
