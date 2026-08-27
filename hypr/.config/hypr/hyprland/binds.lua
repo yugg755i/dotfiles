@@ -17,10 +17,9 @@ hl.bind(
 	)
 )
 hl.bind(mainMod .. " + CTRL + E", hl.dsp.exec_cmd("loginctl terminate-session $XDG_SESSION_ID"))
-hl.bind(mainMod .. " + SHIFT + ALT + W", hl.dsp.exec_cmd("kitty -e nmtui"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("kitty -e btop"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("bash ~/hypr-modules/wifi.sh"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("bash ~/hypr-modules/bluetooth.sh"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("kitty --class floatterm -e nmtui"))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("kitty --class floatterm -e bluetui"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("localsend"))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("kitty -e nvim"))
@@ -39,7 +38,7 @@ hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/
 hl.bind(mainMod .. " + ALT + SHIFT + S", hl.dsp.exec_cmd("bash ~/.config/rofi/vwallpaper.sh"))
 hl.bind(mainMod .. " + ALT + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/rofi/matugen-theme.sh"))
 hl.bind(mainMod .. " + ALT + SHIFT + L", hl.dsp.exec_cmd("~/.config/hypr/scripts/lock-mode-select.sh"))
-
+hl.bind(mainMod .. " + ALT + SHIFT + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/waybar-style"))
 -- Power modes
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("bash ~/.config/rofi/power-mode.sh"))
 
@@ -78,7 +77,9 @@ hl.bind(
 		'bash -c \'STATE=$(nmcli radio wifi); if [ "$STATE" = "enabled" ]; then nmcli radio wifi off && notify-send "Airplane Mode ON"; else nmcli radio wifi on && notify-send "Airoplane Mode OFF"; fi\''
 	)
 )
-hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd("kitty"))
+-- FIXED: was bound to exec_cmd("kitty") — opening a terminal on a touchpad
+-- toggle key makes no sense. Use libinput's actual toggle command instead.
+hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd("hyprctl keyword input:touchpad:disable_while_typing toggle"))
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl pause"), { locked = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
@@ -88,7 +89,6 @@ hl.bind("XF86Calculator", hl.dsp.exec_cmd("qalculate-gtk"))
 -- === Window Management ===
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
--- hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(
 	mainMod .. " + SHIFT + F",
 	hl.dsp.window.fullscreen({
@@ -100,64 +100,40 @@ hl.bind(
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.window.float({ action = "toggle" }))
 
 -- === Focus Navigation ===
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }), { repeating = true })
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }), { repeating = true })
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }), { repeating = true })
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }), { repeating = true })
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }), { repeating = true })
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }), { repeating = true })
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }), { repeating = true })
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }), { repeating = true })
+hl.bind(mainMod .. " + left", hl.dsp.layout("focus l"), { repeating = true })
+hl.bind(mainMod .. " + right", hl.dsp.layout("focus r"), { repeating = true })
+hl.bind(mainMod .. " + H", hl.dsp.layout("focus l"), { repeating = true })
+hl.bind(mainMod .. " + L", hl.dsp.layout("focus r"), { repeating = true })
+hl.bind(mainMod .. " + comma", hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
 
 -- === Window Movement ===
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "left" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }), { repeating = true })
-
--- === Column Navigation (scrolling layout) ===
-hl.bind(mainMod .. " + Home", hl.dsp.focus({ window = "first" }))
-hl.bind(mainMod .. " + End", hl.dsp.focus({ window = "last" }))
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.layout("swapcol l"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.layout("swapcol r"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.layout("swapcol l"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.layout("swapcol r"), { repeating = true })
 
 -- === Monitor Focus ===
 hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({ monitor = "l" }))
 hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({ monitor = "r" }))
 hl.bind(mainMod .. " + CTRL + H", hl.dsp.focus({ monitor = "l" }))
-hl.bind(mainMod .. " + CTRL + J", hl.dsp.focus({ monitor = "d" }))
-hl.bind(mainMod .. " + CTRL + K", hl.dsp.focus({ monitor = "u" }))
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.focus({ monitor = "l" }))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.focus({ monitor = "r" }))
 
 -- === Move Window to Monitor ===
 hl.bind(mainMod .. " + SHIFT + CTRL + left", hl.dsp.window.move({ monitor = "l" }))
-hl.bind(mainMod .. " + SHIFT + CTRL + down", hl.dsp.window.move({ monitor = "d" }))
-hl.bind(mainMod .. " + SHIFT + CTRL + up", hl.dsp.window.move({ monitor = "u" }))
 hl.bind(mainMod .. " + SHIFT + CTRL + right", hl.dsp.window.move({ monitor = "r" }))
 hl.bind(mainMod .. " + SHIFT + CTRL + H", hl.dsp.window.move({ monitor = "l" }))
-hl.bind(mainMod .. " + SHIFT + CTRL + J", hl.dsp.window.move({ monitor = "d" }))
-hl.bind(mainMod .. " + SHIFT + CTRL + K", hl.dsp.window.move({ monitor = "u" }))
 hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.window.move({ monitor = "r" }))
 
 -- === Workspace Navigation ===
-hl.bind(mainMod .. " + Page_Down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + Page_Up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + CTRL + down", hl.dsp.window.move({ workspace = "e+1" }))
-hl.bind(mainMod .. " + CTRL + up", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + CTRL + U", hl.dsp.window.move({ workspace = "e+1" }))
-hl.bind(mainMod .. " + CTRL + I", hl.dsp.window.move({ workspace = "e-1" }))
--- hl.bind(mainMod .. " + TAB",         hl.dsp.exec_cmd("bash ~/.config/scripts/workspace-overview.sh"))
-hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("qs ipc -c overview call overview toggle"))
+hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = "e-1" }))
 
 -- === Move Window to Workspace (silent) ===
-hl.bind(mainMod .. " + SHIFT + Page_Down", hl.dsp.window.move({ workspace = "e+1" }))
-hl.bind(mainMod .. " + SHIFT + Page_Up", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = "e+1" }))
-hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + CTRL + I", hl.dsp.window.move({ workspace = "e+1", follow = false }))
+hl.bind(mainMod .. " + CTRL + U", hl.dsp.window.move({ workspace = "e-1", follow = false }))
 
 -- === Mouse Wheel Workspace ===
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -174,28 +150,17 @@ end
 hl.bind(mainMod .. " + " .. 0, hl.dsp.focus({ workspace = 10 }))
 hl.bind(mainMod .. " + SHIFT + " .. 0, hl.dsp.window.move({ workspace = 10 }))
 
--- === Column / Layout ===
-hl.bind(mainMod .. " + bracketleft", hl.dsp.layout("preselect l"))
-hl.bind(mainMod .. " + bracketright", hl.dsp.layout("preselect r"))
-hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit"))
+-- === Column / Layout (scrolling) ===
+hl.bind(mainMod .. " + R", hl.dsp.layout("promote"))
 
 -- === Resize ===
-hl.bind(mainMod .. " + minus", hl.dsp.window.resize({ x = -100, y = 0, relative = true }), { repeating = true })
-
-hl.bind(mainMod .. " + equal", hl.dsp.window.resize({ x = 100, y = 0, relative = true }), { repeating = true })
-
-hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.resize({ x = 0, y = -100, relative = true }), { repeating = true })
-
-hl.bind(mainMod .. " + SHIFT + equal", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), { repeating = true })
-
-hl.bind(mainMod .. " + code:20", hl.dsp.window.resize({ x = -100, y = 0, relative = true }))
-
-hl.bind(mainMod .. " + code:21", hl.dsp.window.resize({ x = 100, y = 0, relative = true }))
+hl.bind(mainMod .. " + bracketleft", hl.dsp.layout("colresize -conf"), { repeating = true })
+hl.bind(mainMod .. " + bracketright", hl.dsp.layout("colresize +conf"), { repeating = true })
+hl.bind(mainMod .. " + minus", hl.dsp.window.resize({ x = 0, y = -100, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + equal", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), { repeating = true })
 
 -- === Mouse drag / resize ===
-
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- === System Controls ===
@@ -220,5 +185,10 @@ hl.bind(
 hl.bind(mainMod .. " + CTRL + F", hl.dsp.exec_cmd('kitty -e bash -c "fd . ~ | fzf | xargs -r xdg-open"'))
 
 -- === Touchpad Gestures ===
-hl.gesture({ fingers = 3, direction = "down", mods = "ALT", action = "close" })
-hl.gesture({ fingers = 3, direction = "up", mods = "SUPER", scale = 1.5, action = "fullscreen" })
+hl.gesture({
+	fingers = 3,
+	direction = "vertical",
+	action = "workspace",
+})
+
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())

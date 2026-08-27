@@ -1,17 +1,12 @@
 #!/bin/bash
-
 STATE_FILE="/tmp/focus-mode.state"
+WAYBAR_DIR="$HOME/.config/waybar"
 
 activate() {
   touch "$STATE_FILE"
   swaync-client --dnd-on
   hyprctl eval '
   hl.config({
-    general = {
-      gaps_in = 0,
-      gaps_out = 0,
-      border_size = 0.5,
-    },
     animations = {
       enabled = false,
     },
@@ -24,10 +19,12 @@ activate() {
     }
   })
   '
-  grep -q 'alpha(@surface, 0.78)' ~/.config/waybar/style.css &&
-    sed -i 's/background-color: alpha(@surface, 0\.78);/background-color: @surface;/' ~/.config/waybar/style.css
-  pkill waybar
-  waybar &
+  pkill -x waybar
+  waybar \
+    -c "$WAYBAR_DIR/themes/dwm-style/config.jsonc" \
+    -s "$WAYBAR_DIR/themes/dwm-style/style.css" \
+    >/dev/null 2>&1 &
+  disown
 }
 
 deactivate() {
@@ -35,11 +32,6 @@ deactivate() {
   swaync-client --dnd-off
   hyprctl eval '
   hl.config({
-    general = {
-      gaps_in = 3,
-      gaps_out = 5,
-      border_size = 1
-    },
     animations = {
       enabled = true
     },
@@ -53,10 +45,12 @@ deactivate() {
     }
   })
   '
-  grep -q 'background-color: @surface;' ~/.config/waybar/style.css &&
-    sed -i 's/background-color: @surface;/background-color: alpha(@surface, 0.78);/' ~/.config/waybar/style.css
-  pkill waybar
-  waybar &
+  pkill -x waybar
+  waybar \
+    -c "$WAYBAR_DIR/config.jsonc" \
+    -s "$WAYBAR_DIR/style.css" \
+    >/dev/null 2>&1 &
+  disown
 }
 
 case "$1" in

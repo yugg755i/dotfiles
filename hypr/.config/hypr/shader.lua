@@ -11,9 +11,9 @@ M.active_mode = nil
 
 M.defaults = {
 	rounding = 0,
-	gaps_in = 3,
+	gaps_in = 5,
 	gaps_out = 5,
-	border_size = 1,
+	border_size = 0,
 	animations = true,
 	shadow = false,
 	blur = true,
@@ -32,7 +32,7 @@ local function restore_defaults()
 		},
 		decoration = {
 			rounding = M.defaults.rounding,
-			active_opacity = 0.92,
+			active_opacity = 0.93,
 			inactive_opacity = 0.88,
 			dim_inactive = M.defaults.dim_inactive,
 			dim_strength = M.defaults.dim_strength,
