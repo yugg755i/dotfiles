@@ -1,0 +1,360 @@
+/* ─────────────── CORE ─────────────────────────────────────────────────────── */
+
+{
+  "hyprland/window": {
+    "format": "",
+
+    "format-alt": "{title}",
+    "max-length": 80,
+    "separate-outputs": false,
+    "rewrite": {
+      "^.*( — Zen Browser|Zen Browser)$":      "󰈹",
+      "^.*( — Firefox|Firefox)$":              "󰈹",
+      "^.*( — Brave|Brave)$":                  "",
+      "^.*( — Chromium|Chromium)$":            "󰈹",
+      "^.*v( .*|$)":                           "",
+      "^.*~$":                                 "󰄛",
+      "^.*(- Spotify|Spotify)$":               "󰏤",
+      "^.*(- Code|Code)$":                     "󰈹",
+      "^.*(- Cursor|Cursor)$":                 "󰈹",
+      "^.+ $":                                 ""  
+    }
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "format-icons": {
+      /*
+      "1":  "",  
+      "2":  "󰖟", 
+      "3":  "󰅩", 
+      "4":  "󰞶", 
+      "5":  "",
+      "6":  "󰓇", 
+      "7":  "", 
+      "8":  "󰕧", 
+      "9":  "", 
+      "10": "󰙯"
+      
+      "1":  "󰊠",  
+      "2":  "󰊠", 
+      "3":  "󰊠", 
+      "4":  "󰊠", 
+      "5":  "󰊠",
+      "6":  "󰊠", 
+      "7":  "󰊠", 
+      "8":  "󰊠", 
+      "9":  "󰊠", 
+      "10": "󰊠"
+      */
+
+      "1":  "1",  
+      "2":  "2", 
+      "3":  "3", 
+      "4":  "4", 
+      "5":  "5",
+      "6":  "6", 
+      "7":  "7", 
+      "8":  "8", 
+      "9":  "9", 
+      "10": "0"
+
+    }
+  },
+
+  "clock": {
+    "format": "{:%H\n%M}",
+    "format-alt": "{:%A %d.%m}",
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "calendar": {
+      "mode": "month",
+      "on-scroll": 1,
+      "format": {
+        "months":   "<span color='#ffead3'><b>{}</b></span>",
+        "days":     "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":    "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today":    "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up":   "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+
+/* ─────────────── GRUPOS PRINCIPALES ──────────────────────────────────────── */
+
+  "group/info": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+    "modules": [
+      "custom/arrow-left",
+      "custom/playerlabel",
+      "custom/updates"
+      // "group/music"   // aparcado; actívalo cuando lo necesites
+    ]
+  },
+
+  "group/apps": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+    "modules": [
+      "custom/arrow-right",
+      // "wlr/taskbar",
+      "cpu",
+      "memory",
+      "disk"
+    ]
+  },
+
+  "group/video": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": false },
+    "modules": [
+      "custom/arrow-left",
+      "custom/record",
+      "custom/section",
+      "custom/stop",
+      "group/control-center"
+    ]
+  },
+
+  "group/control-center": {
+    "orientation": "inherit",
+    "modules": ["group/audio", "group/connection"]
+  },
+
+  "group/audio": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": false },
+    "modules": ["pulseaudio"] // "pulseaudio/slider"
+  },
+
+  "group/connection": {
+    "orientation": "inherit",
+    "modules": ["group/network"]
+  },
+
+  "group/network": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 10000, "transition-left-to-right": true },
+    "modules": ["network"]
+  },
+
+  "group/bluetooth": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+    "modules": ["bluetooth", "bluetooth#status"]
+  },
+
+  "group/utils": {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": false },
+    "modules": [
+      "custom/arrow-right",     
+      "tray",
+      "custom/notifications",
+      "custom/weather"
+    ]
+  },
+
+  "group/power":  {
+    "orientation": "inherit",
+    "drawer": { "transition-duration": 300, "transition-left-to-right": false },
+    "modules": ["battery", "power-profiles-daemon"]
+  },
+
+/* ─────────────── MÓDULOS DE SISTEMA ─────────────────────────────────────── */
+
+  "cpu":    { "format": "{usage}"},
+  "memory": { "format": "{:2}"},
+  "disk":   { "interval": 600, "format": "{percentage_used}", "path": "/"},
+
+  "battery": {
+    "states": { "good": 95, "warning": 30, "critical": 15 },
+    "format": "{icon}",
+    "format-charging": "<b>{icon}</b>",
+    "format-full": "<span color='#82A55F'><b>{icon}</b></span>",
+    "format-icons": ["","","","",""],
+    "tooltip-format": "{timeTo} {capacity} % | {power} W"
+  },
+
+  "pulseaudio": {
+    "format": "{volume}",
+    "format-bluetooth": "{icon}",
+    "format-muted": "󰖁",
+    "tooltip": false,
+    "format-icons": {
+      "headphones": "󰋌","handsfree": "󰋌","headset": "󰋌",
+      "phone":      "","portable": "","car": " ",
+      "default": ["󰕿","󰖀","󰕾"]
+    },
+    "on-click":         "changevolume mute",
+    "on-click-middle":  "pavucontrol",
+    "on-scroll-up":     "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down":   "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "network": {
+    "format": "{icon} ",
+    "format-icons": { "wifi": ["󰤨"], "ethernet": ["󰈁"], "disconnected": [""] },
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈁",
+    "format-disconnected": "󰖪",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi":      "{essid} ({signalStrength}%) \n{ipaddr} | {frequency} MHz{icon}",
+    "tooltip-format-ethernet":  "{ifname} 󰈀\n{ipaddr} | {frequency} MHz{icon}",
+    "tooltip-format-disconnected": "Not Connected to any type of Network",
+    "on-click": "python ~/.config/rofi/network/network.py"
+  },
+
+  "network#speed": {
+    "format": "{bandwidthDownBits} ",
+    "interval": 5,
+    "tooltip": false
+  },
+
+  "bluetooth": {
+    "format":"",
+    "format-on": "",
+    "format-off": "󰂲",
+    "format-disabled": "",
+    "format-connected": "",
+    "tooltip": false,
+    "on-click": "bash ~/.config/rofi/bluetooth/bluetooth.sh"
+  },
+
+  "bluetooth#status": {
+    "format-connected":             "<b>{num_connections}</b>",
+    "format-connected-battery":     "<small><b>{device_battery_percentage}%</b></small>",
+    "tooltip-format":               "{controller_alias} {controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected":     "{controller_alias} {controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected":           "{device_alias} {device_address}",
+    "tooltip-format-enumerate-connected-battery":   "{device_alias} {device_address} {device_battery_percentage}%",
+    "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
+  },
+
+/* ─────────────── MODS PERSONALIZADOS ────────────────────────────────────── */
+
+  //"custom/arrow-left":  { "format": "󰁒", "tooltip": false },
+  //"custom/arrow-right": { "format": "󰁙", "tooltip": false },
+
+  "custom/arrow-left":  { "format": "&lt;", "tooltip": false, "rotate": 270 },
+  "custom/arrow-right": { "format": ">", "tooltip": false, "rotate": 270 },
+
+  "custom/updates": {
+    "format": "󱧕 {}",
+    "tooltip": true,
+    "interval": 43200,               // 12 h
+    "exec": "~/.config/hypr/scripts/check_updates.sh",
+    "return-type": "json",
+    "rotate": 90
+  },
+
+  "custom/playerlabel": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 50,
+    "exec": "playerctl -p spotify metadata --format '{\"text\": \"{{artist}} : {{markup_escape(title)}}\", \"tooltip\": \"Spotify : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click":        "bash -c 'player=$(playerctl -l | grep -E \"spotify|cider\" | head -n 1); playerctl -p \"$player\" previous'",
+    "on-click-middle": "bash -c 'player=$(playerctl -l | grep -E \"spotify|cider\" | head -n 1); playerctl -p \"$player\" play-pause'",
+    "on-click-right":  "bash -c 'player=$(playerctl -l | grep -E \"spotify|cider\" | head -n 1); playerctl -p \"$player\" next'",
+    "tooltip": false,
+    "rotate": 90
+  },
+
+  "custom/record": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Record Screen",
+    "on-click": "bash ~/.config/hypr/scripts/record.sh fullscreen"
+  },
+  "custom/stop": {
+    "format": "󰻃",
+    "tooltip": true,
+    "tooltip-format": "Stop Recording",
+    "on-click": "bash ~/.config/hypr/scripts/record.sh stop"
+  },
+  "custom/section": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Record Section",
+    "on-click": "bash ~/.config/hypr/scripts/record.sh section"
+  },
+
+  "custom/notifications": {
+    "format": "{icon}",
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click":       "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+    "tooltip": false,
+    "format-icons": {
+      "notification":                "󱅫",
+      "dnd-notification":            "󰂛",
+      "none":                        "󰂚",
+      "dnd-none":                    "󰂛",
+      "inhibited-notification":      "󰂚",
+      "inhibited-none":              "󰂚",
+      "dnd-inhibited-notification":  "󰂛",
+      "dnd-inhibited-none":          "󰂛"
+    }
+  },
+
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --custom-indicator '{ICON}{temp_C}°C'",
+    "return-type": "json"
+  },
+
+  "custom/theme-switcher": {
+    "format": "󰏘",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/scripts/toggle_theme.sh"
+  },
+
+  "custom/cava": {
+    "format": "{}",
+    "exec": "bash ~/.config/hypr/scripts/cava.sh"
+  },
+
+  "custom/icon": { "format": "󰣇" },
+
+/* ─────────────── TASKBAR Y POWER PROFILES ───────────────────────────────── */
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 20,
+    "all-outputs": true,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["wofi", "rofi", "swaylock"]
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip": true,
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "format-icons": {
+      "default":     "",
+      "balanced":    "<span><small></small></span>",
+      "power-saver": "<span color='#a6e3a1'><small></small></span>"
+    }
+  },
+
+  "tray": { "spacing": 8 }
+}
+
+/* ─────────────── FIN ────────────────────────────────────────────────────── */

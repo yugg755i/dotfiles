@@ -1,0 +1,124 @@
+[
+  {
+    "ipc": true,
+    "layer": "top",
+    "gtk-layer-shell": true,
+    "position": "bottom",
+    "spacing": 6,
+
+    "cpu": {
+      "format": "<span foreground='#cba6f7'>Cpu:</span> {usage}",
+      "format-alt-click": "click",
+      "interval": 1,
+      "min-length": 5
+    },
+
+    "memory": {
+      "format": "<span foreground='#cba6f7'>Mem:</span> {percentage}",
+      "interval": 10,
+      "tooltip": false
+    },
+
+    "hyprland/window": {
+      "format": "{class}",
+      "separate-outputs": true,
+      "max-length": 35,
+      "tooltip": true
+    },
+
+    "clock#time": {
+      "format": "{:%H:%M}",
+      "interval": 1,
+      "tooltip": false
+    },
+
+    "clock#date": {
+      "interval": 20,
+      "format": "{:%a · %d %b}",
+      "on-click": "gnome-calendar",
+      "tooltip": false
+    },
+
+    "privacy": {
+      "icon-spacing": 12,
+      "icon-size": 13,
+      "transition-duration": 250,
+      "modules": [
+        {
+          "type": "screenshare",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        },
+        {
+          "type": "audio-in",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        },
+        {
+          "type": "audio-out",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        }
+      ]
+    },
+
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "format": "{name}",
+      "persistent-workspaces": {
+        "*": [1, 2, 3, 4, 5]
+      }
+    },
+
+    "network": {
+      "interval": 2,
+      "format-wifi": "<span foreground='#cba6f7'>↓</span>{bandwidthDownBits} <span foreground='#cba6f7'>↑</span>{bandwidthUpBits}",
+      "format-ethernet": "<span foreground='#cba6f7'>󰈀 ↓</span>{bandwidthDownBits} <span foreground='#cba6f7'>↑</span>{bandwidthUpBits}",
+      "format-linked": "{ifname}",
+      "format-disconnected": "",
+      "family": "ipv4",
+
+      "tooltip-format-wifi": "{essid}\n{ipaddr}/{cidr}\n↓ {bandwidthDownBits}  ↑ {bandwidthUpBits}",
+      "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\n↓ {bandwidthDownBits}  ↑ {bandwidthUpBits}"
+    },
+
+    "tray": {
+      "icon-size": 15,
+      "spacing": 7
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+
+    "custom/swaync": {
+      "format": "󰂚",
+      "on-click": "swaync-client -t",
+      "tooltip": false
+    },
+
+    "modules-left": [
+      "cpu",
+      "memory",
+      "hyprland/window",
+      "clock#time",
+      "clock#date",
+      "idle_inhibitor"
+    ],
+
+    "modules-center": [
+      "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+      "privacy",
+      "network",
+      "tray",
+      "custom/swaync"
+    ]
+  }
+]

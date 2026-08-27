@@ -1,0 +1,220 @@
+{
+  "reload_style_on_change": true,
+
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "margin": "2 4 0 4",
+  "height": 26,
+
+  "modules-left": [
+    "custom/launcher",
+    "custom/separator",
+    "hyprland/workspaces",
+    "custom/separator",
+    "custom/lyrics"
+  ],
+
+  "modules-center": [],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "custom/temperature",
+    "backlight",
+    "battery",
+    "custom/separator",
+    "clock"
+  ],
+
+
+  // =========================
+  // LAUNCHER
+  // =========================
+
+  "custom/launcher": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun",
+    "on-click-right": "kitty",
+    "tooltip-format": "Application Launcher\n\nLeft click: Rofi\nRight click: Terminal"
+  },
+
+
+  // =========================
+  // WORKSPACES
+  // =========================
+
+"hyprland/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon}",
+
+    "format-icons": {
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "10": "十",
+        "default": "・"
+    },
+
+    "persistent-workspaces": {
+        "*": [1, 2, 3, 4, 5]
+    }
+},
+
+
+  // =========================
+  // LYRICS / MEDIA
+  // =========================
+
+  "custom/lyrics": {
+    "exec": "~/.config/waybar/scripts/waybar-lyrics.sh",
+    "interval": 1,
+
+    "on-click": "swaync-client -t",
+    "on-click-right": "bash ~/.config/waybar/scripts/toggle-lyrics.sh",
+
+    "return-type": "json",
+    "tooltip": true
+  },
+
+
+  // =========================
+  // CPU
+  // =========================
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛 {usage}%",
+    "tooltip": false,
+    "on-click": "kitty -e btop"
+  },
+
+
+  // =========================
+  // MEMORY
+  // =========================
+
+  "memory": {
+    "interval": 5,
+    "format": "  {percentage}%",
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+    "on-click": "kitty -e btop"
+  },
+
+
+  // =========================
+  // VOLUME
+  // =========================
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+
+    "scroll-step": 5,
+
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+
+    "tooltip-format": "Volume: {volume}%"
+  },
+
+
+  // =========================
+  // TEMPERATURE
+  // =========================
+
+  "custom/temperature": {
+    "exec": "echo '{\"text\":\"󰔏 '$(cat /sys/class/hwmon/hwmon4/temp1_input | awk '{printf \"%.0f\", $1/1000}')'°C\"}'",
+
+    "interval": 3,
+
+    "return-type": "json",
+    "tooltip": false
+  },
+
+
+  // =========================
+  // BACKLIGHT
+  // =========================
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+
+    "format-icons": [
+      "󰃞",
+      "󰃝",
+      "󰃟",
+      "󰃠"
+    ],
+
+    "tooltip": false
+  },
+
+
+  // =========================
+  // BATTERY
+  // =========================
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+
+    "interval": 20,
+    "tooltip": false
+  },
+
+
+  // =========================
+  // CLOCK
+  // =========================
+
+  "clock": {
+    "format": "  {:%I:%M %p}",
+    "format-alt": " {:%A  %e %B}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+
+  // =========================
+  // SEPARATOR
+  // =========================
+
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "margin": "4 10 0 10",
+    "fixed-center": true,
+    "reload_style_on_change": true,
+    "name": "overlay",
+    "passtrough": true,
+
+    "include": ["~/.config/waybar/themes/purple-horizontal/modules.jsonc"],
+
+    "modules-left": [
+      "hyprland/window",
+      "group/apps",
+    ],
+    "modules-center": [
+      //"memory",
+      //"custom/updates",
+      "group/info",
+      "hyprland/workspaces",
+      "group/utils"
+      //"tray",
+      //"custom/notifications"
+    ],
+    "modules-right": [
+      // "group/connection",
+      "clock",
+      "group/power"
+    ]
+  }

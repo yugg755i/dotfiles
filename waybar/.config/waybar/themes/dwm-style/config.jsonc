@@ -1,0 +1,168 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "margin": "4 4 0 4",
+  "height": 22,
+
+  "expand-center": true,
+  "fixed-center": false,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/media-arrow",
+    "custom/lyrics"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "clock",
+    "hyprland/language",
+    "cpu",
+    "memory",
+    "custom/temperature",
+    "battery",
+    "pulseaudio"
+  ],
+
+  // =========================
+  // WORKSPACES (dwm-style tags: 1 2 3 4 5 6 7 8 9 [0])
+  // =========================
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "[0]",
+      "default": "?"
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  },
+
+  // =========================
+  // WINDOW TITLE
+  // =========================
+  "hyprland/window": {
+    "format": "{title}",
+    "separate-outputs": true,
+    "rewrite": {
+      "": "desktop"
+    }
+  },
+
+  // =========================
+  // CLOCK
+  // =========================
+  "clock": {
+    "format": "[{:%I:%M %p}]",
+    "format-alt": "[{:%A %e %B}]",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1
+  },
+
+  // =========================
+  // KEYBOARD LAYOUT
+  // =========================
+  "hyprland/language": {
+    "format": "[{}]",
+    "format-en": "us",
+    "keyboard-name": ""
+  },
+
+
+  // CPU
+  // =========================
+  "cpu": {
+    "interval": 5,
+    "format": "[󰍛: {usage}%]",
+    "tooltip": false,
+    "on-click": "kitty -e btop"
+  },
+
+  // =========================
+  // MEMORY
+  // =========================
+  "memory": {
+    "interval": 5,
+    "format": "[ : {percentage}%]",
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+    "on-click": "kitty -e btop"
+  },
+
+  // =========================
+  // TEMPERATURE
+  // =========================
+  "custom/temperature": {
+    "exec": "echo '{\"text\":\"[󰔏: '$(cat /sys/class/hwmon/hwmon4/temp1_input | awk '{printf \"%.0f\", $1/1000}')'°C]\"}'",
+    "interval": 3,
+    "return-type": "json",
+    "tooltip": false
+  },
+
+  // =========================
+  // BACKLIGHT
+  // =========================
+  "backlight": {
+    "format": "[bl {percent}%]",
+    "tooltip": false
+  },
+
+  // =========================
+  // BATTERY
+  // =========================
+  "battery": {
+    "format": "[{icon}: {capacity}%]",
+    "format-charging": "[󰂄: {capacity}%]",
+    "format-icons": [
+      "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "interval": 20,
+    "tooltip": false
+  },
+
+  // =========================
+  // VOLUME
+  // =========================
+  "pulseaudio": {
+    "format": "[{icon}: {volume}%]",
+    "format-muted": "[󰝟: mute]",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip-format": "Volume: {volume}%"
+  },
+
+  // =========================
+  // MEDIA (arrow + lyrics script, unchanged)
+  // =========================
+  "custom/media-arrow": {
+    "format": "\u203a",
+    "tooltip": false
+  },
+  "custom/lyrics": {
+    "exec": "~/.config/waybar/scripts/waybar-lyrics.sh",
+    "interval": 1,
+    "on-click": "swaync-client -t",
+    "on-click-right": "bash ~/.config/waybar/scripts/toggle-lyrics.sh",
+    "return-type": "json",
+  }
+}
+

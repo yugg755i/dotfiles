@@ -1,0 +1,175 @@
+@import "/home/yugg755/.config/waybar/colors.css";
+/* =========================
+   BASE
+   ========================= */
+* {
+  background-color: transparent;
+  color: @on_surface;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: 500;
+}
+/* =========================
+   BAR
+   ========================= */
+window#waybar {
+  background-color: @background;
+  color: @on_surface;
+}
+/* =========================
+   MODULE GROUPS
+   ========================= */
+.modules-left {
+  margin-left: 10px;
+}
+.modules-center {
+  margin: 0;
+}
+.modules-right {
+  margin-right: 10px;
+}
+/* =========================
+   WORKSPACES — DWM STYLE
+   ========================= */
+
+#workspaces {
+  transition: all 150ms ease-in-out;
+}
+
+#workspaces button {
+  all: initial;
+
+  transition: all 90ms ease-in-out;
+
+  padding: 0 6px;
+  margin: 0 1.5px;
+
+  min-width: 9px;
+
+  border-radius: 0;
+  border: none;
+
+  color: @on_surface;
+  opacity: 0.30;
+}
+
+/* EMPTY */
+#workspaces button.empty {
+  opacity: 0.30;
+}
+
+/* OCCUPIED — inactive */
+#workspaces button:not(.empty) {
+  opacity: 1;
+}
+
+/* ACTIVE */
+#workspaces button.active {
+  opacity: 1;
+
+  color: @primary;
+  font-weight: 700;
+
+  background-color: @primary_container;
+}
+
+/* HOVER */
+#workspaces button:hover {
+  opacity: 1;
+  background-color: alpha(@on_surface, 0.12);
+}
+
+/* URGENT */
+#workspaces button.urgent {
+  opacity: 1;
+
+  color: @error;
+  background-color: transparent;
+}
+
+/* =========================
+   WINDOW TITLE
+   ========================= */
+.modules-center {
+  margin: 0;
+  background-color: @primary_container;
+  color: @on_primary_container;
+}
+
+#window {
+  background-color: transparent;
+  color: @on_primary_container;
+
+  padding: 0 16px;
+  margin: 0;
+
+  font-weight: 700;
+}
+
+#window.empty {
+  background-color: transparent;
+  color: alpha(@on_surface, 0.5);
+  font-weight: 500;
+}
+/* =========================
+   MEDIA (centered)
+   ========================= */
+#custom-media-arrow {
+  color: alpha(@on_surface, 0.55);
+  padding: 0 8px;
+  margin: 0;
+}
+#custom-lyrics {
+  padding: 0 10px;
+  margin: 0;
+  min-width: 0;
+  color: @on_surface;
+}
+#custom-lyrics:hover {
+  color: @primary_container;
+}
+/* =========================
+   RIGHT-SIDE BRACKET MODULES
+   ========================= */
+#clock,
+#language,
+#cpu,
+#memory,
+#custom-temperature,
+#backlight,
+#battery,
+#pulseaudio {
+  padding: 0 3px;
+  margin: 0;
+  color: @on_surface;
+}
+#battery.warning {
+  color: @tertiary;
+}
+#battery.critical {
+  color: @error;
+}
+#pulseaudio.muted {
+  color: alpha(@on_surface, 0.45);
+}
+/* =========================
+   TOOLTIP
+   ========================= */
+tooltip {
+  padding: 2px;
+  background-color: @surface_container;
+  color: @on_surface;
+  border-radius: 0;
+}
+tooltip label {
+  color: @on_surface;
+}
+/* =========================
+   HIDDEN
+   ========================= */
+.hidden {
+  opacity: 0;
+}

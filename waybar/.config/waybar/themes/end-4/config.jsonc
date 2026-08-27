@@ -1,0 +1,145 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "height": 35,
+  "margin-right": 10,
+  "margin-left": 10,
+  "margin-top": 5,
+
+  "modules-left": [
+    "custom/launcher",
+    "custom/active_window",
+    "custom/lyrics",
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces",
+    "clock"
+  ],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "custom/separator#blank",
+    "pulseaudio",
+    "custom/temperature",
+    "backlight",
+    "battery"
+  ],
+
+  "custom/active_window": {
+    "exec": "~/.config/waybar/themes/end-4/window.sh",
+    "return-type": "json",
+    "markup": true
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "disable-scroll": true,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  },
+
+  "custom/launcher": {
+   "format": "󰣇",
+    "on-click": "rofi -show drun",
+    "on-click-right": "kitty",
+    "tooltip-format": "Application Launcher\n\nLeft click: Rofi\nRight click: Terminal"
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p • %a, %d/%m}",
+    "format-alt": "{:%A, %d %B %Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "󰻠 {usage}%",
+    "tooltip": false,
+    "on-click": "kitty -e btop"
+  },
+
+  "memory": {
+    "interval": 2,
+    "format": "󰍛 {percentage}%",
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+    "on-click": "kitty -e btop"
+  },
+
+  "custom/lyrics": {
+    "exec": "~/.config/waybar/scripts/waybar-lyrics.sh",
+    "interval": 1,
+    "on-click": "swaync-client -t",
+    "on-click-right": "bash ~/.config/waybar/scripts/toggle-lyrics.sh",
+    "return-type": "json",
+    "tooltip": true
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 5,
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip-format": "Volume: {volume}%"
+  },
+
+  "custom/temperature": {
+    "exec": "echo '{\"text\":\"󰔏 '$(cat /sys/class/hwmon/hwmon4/temp1_input | awk '{printf \"%.0f\", $1/1000}')'°C\"}'",
+    "interval": 3,
+    "return-type": "json",
+    "tooltip": false
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃝",
+      "󰃟",
+      "󰃠"
+    ],
+    "tooltip": false
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "interval": 20,
+    "tooltip": false
+  },
+
+  "custom/separator#blank": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  }
+}

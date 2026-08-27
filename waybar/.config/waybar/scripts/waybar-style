@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+
+set -u
+
+WAYBAR_DIR="$HOME/.config/waybar"
+THEMES_DIR="$WAYBAR_DIR/themes"
+
+CONFIG_LINK="$WAYBAR_DIR/config.jsonc"
+STYLE_LINK="$WAYBAR_DIR/style.css"
+
+ROFI_CMD="rofi -dmenu -i -p Waybar Theme"
+
+die() {
+  printf 'Error: %s\n' "$1" >&2
+  exit 1
+}
+
+usage() {
+  cat <<EOF
+Usage:
+  waybar-theme              Open theme selector
+  waybar-theme <theme>      Switch to a theme
+  waybar-theme list         List available themes
+  waybar-theme current      Show current theme
+  waybar-theme help         Show this help
+
+Examples:
+  waybar-theme
+  waybar-theme pill
+  waybar-theme focus
+  waybar-theme omarchy-minimal
+EOF
+}
+
+theme_exists() {
+  [[ -d "$THEMES_DIR/$1" ]]
+}
+
+theme_valid() {
+  local theme="$1"
+
+  [[ -f "$THEMES_DIR/$theme/config.jsonc" ]] &&
+    [[ -f "$THEMES_DIR/$theme/style.css" ]]
+}
+
+list_themes() {
+  find "$THEMES_DIR" -mindepth 1 -maxdepth 1 -type d \
+    -printf '%f\n' 2>/dev/null |
+    sort
+}
+
+current_theme() {
+  local config_target style_target config_theme style_theme
+
+  if [[ ! -L "$CONFIG_LINK" || ! -L "$STYLE_LINK" ]]; then
+    echo "unknown"
+    return
+  fi
+
+  config_target=$(readlink -f "$CONFIG_LINK" 2>/dev/null || true)
+  style_target=$(readlink -f "$STYLE_LINK" 2>/dev/null || true)
+
+  config_theme=$(dirname "$config_target")
+  style_theme=$(dirname "$style_target")
+
+  if [[ "$config_theme" == "$style_theme" ]]; then
+    basename "$config_theme"
+  else
+    echo "mixed"
+  fi
+}
+
+restart_waybar() {
+  pkill -x waybar 2>/dev/null || true
+
+  sleep 0.15
+
+  nohup waybar >/tmp/waybar.log 2>&1 &
+  disown
+}
+
+switch_theme() {
+  local theme="$1"
+  local theme_dir="$THEMES_DIR/$theme"
+
+  theme_exists "$theme" ||
+    die "Theme '$theme' does not exist."
+
+  theme_valid "$theme" ||
+    die "Theme '$theme' is incomplete. It needs config.jsonc and style.css."
+
+  ln -sfn "$theme_dir/config.jsonc" "$CONFIG_LINK" ||
+    die "Failed to link config.jsonc."
+
+  ln -sfn "$theme_dir/style.css" "$STYLE_LINK" ||
+    die "Failed to link style.css."
+
+  restart_waybar
+
+  printf "Switched Waybar theme to: %s\n" "$theme"
+}
+
+select_theme() {
+  local current selected themes
+
+  current=$(current_theme)
+
+  themes=$(list_themes)
+
+  [[ -n "$themes" ]] ||
+    die "No themes found in $THEMES_DIR."
+
+  selected=$(
+    printf '%s\n' "$themes" |
+      awk -v current="$current" '
+                $0 == current { print $0 "  [current]"; next }
+                { print }
+            ' |
+      $ROFI_CMD
+  )
+
+  [[ -n "$selected" ]] || exit 0
+
+  selected="${selected%  \[current\]}"
+
+  switch_theme "$selected"
+}
+
+case "${1:-}" in
+"")
+  select_theme
+  ;;
+
+list | ls)
+  list_themes
+  ;;
+
+current)
+  current_theme
+  ;;
+
+help | -h | --help)
+  usage
+  ;;
+
+*)
+  switch_theme "$1"
+  ;;
+esac

@@ -1,0 +1,36 @@
+{
+    "layer": "top",
+    "position": "left",
+    "exclusive": true,
+
+    "passthrough": false,
+    "gtk-layer-shell": true,
+
+    "width": 30,
+    "margin": "4px 0 4px 4px",
+
+    "fixed-center": true,
+    "reload_style_on_change": true,
+
+    "name": "overlay",
+
+    "include": [
+        "~/.config/waybar/themes/purple-vertical/modules.jsonc"
+    ],
+
+    "modules-left": [
+        "hyprland/window",
+        "group/apps"
+    ],
+
+    "modules-center": [
+        "group/info",
+        "hyprland/workspaces",
+        "group/utils"
+    ],
+
+    "modules-right": [
+        "group/power",
+        "clock"
+    ]
+}

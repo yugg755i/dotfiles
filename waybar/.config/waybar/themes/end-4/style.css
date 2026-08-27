@@ -1,0 +1,278 @@
+@import "/home/yugg755/.config/waybar/colors.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: alpha(@background, 0.9);
+  color: @on_surface;
+
+  margin: 2px 10px 0 10px;
+
+  transition:
+    background-color 0.25s ease;
+}
+
+
+/* =========================
+   LEFT
+   ========================= */
+
+.modules-left {
+  margin-left: 6px;
+}
+
+
+/* Launcher */
+
+#custom-launcher {
+  color: @primary;
+  font-size: 17px;
+
+  padding: 2px 8px;
+  margin: 3px 2px;
+
+  background: alpha(@on_surface, 0.08);
+}
+
+
+/* Active window */
+
+#custom-active_window {
+  color: @on_surface;
+
+  padding: 3px 7px;
+  margin: 3px 2px;
+
+  background: alpha(@on_surface, 0.08);
+}
+
+
+/* Lyrics */
+
+#custom-lyrics {
+  color: @tertiary;
+  font-style: italic;
+
+  padding: 3px 8px;
+  margin: 3px 2px;
+
+  background: alpha(@on_surface, 0.08);
+
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+#custom-lyrics:hover {
+  color: @on_surface;
+  background: alpha(@on_surface, 0.13);
+}
+
+
+/* =========================
+   CENTER
+   ========================= */
+
+.modules-center {
+  margin: 0 6px;
+}
+
+
+/* Workspaces */
+
+#workspaces {
+  padding: 0 5px;
+  margin: 3.5px 3px;
+
+  background: alpha(@on_surface, 0.10);
+
+  opacity: 0.95;
+}
+
+#workspaces button {
+  all: unset;
+
+  color: alpha(@on_surface, 0.55);
+
+  padding: 0 6px;
+  margin: 0 1.5px;
+
+  min-width: 9px;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+#workspaces button.empty {
+  color: alpha(@on_surface, 0.35);
+}
+
+#workspaces button:not(.empty):not(.active) {
+  color: alpha(@on_surface, 0.80);
+}
+
+#workspaces button.active {
+  color: @on_primary;
+
+  background: alpha(@primary, 0.90);
+
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 5px;
+
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#workspaces button.active:hover {
+  background: alpha(@primary, 0.70);
+  color: @on_primary;
+}
+
+#workspaces button:hover {
+  background: alpha(@on_surface, 0.08);
+  color: @primary;
+}
+
+#workspaces button.urgent {
+  color: @on_error;
+  background: alpha(@error, 0.75);
+
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+
+/* Clock */
+
+#clock {
+  color: @secondary;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  padding: 3px 11px;
+  margin: 3px 2px;
+
+  background: alpha(@on_surface, 0.08);
+}
+
+
+/* =========================
+   RIGHT
+   ========================= */
+
+.modules-right {
+  margin-right: 6px;
+}
+
+
+/* CPU / RAM */
+
+#cpu,
+#memory {
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 3px 6px;
+  margin: 3px 1px;
+}
+
+#cpu {
+  color: @secondary;
+}
+
+#memory {
+  color: @tertiary;
+}
+
+
+/* Volume */
+
+#pulseaudio {
+  color: @primary;
+
+  padding: 3px 7px;
+  margin: 3px 1px;
+}
+
+#pulseaudio.muted {
+  color: alpha(@on_surface_variant, 0.45);
+}
+
+
+/* Temperature */
+
+#custom-temperature {
+  color: @tertiary;
+
+  padding: 3px 7px;
+  margin: 3px 1px;
+}
+
+
+/* Brightness */
+
+#backlight {
+  color: @secondary;
+
+  padding: 3px 7px;
+  margin: 3px 1px;
+}
+
+
+/* Battery */
+
+#battery {
+  color: @primary;
+
+  padding: 3px 7px;
+  margin: 3px 1px;
+}
+
+#battery.charging {
+  color: @primary;
+}
+
+#battery.warning {
+  color: @tertiary;
+}
+
+#battery.critical {
+  color: @error;
+}
+
+
+/* Notifications */
+
+#custom-swaync {
+  color: @primary;
+
+  padding: 3px 7px;
+  margin: 3px 2px 3px 1px;
+}
+
+
+/* =========================
+   TOOLTIPS
+   ========================= */
+
+tooltip {
+  background: @surface_container;
+
+  color: @on_surface;
+
+  border: 1px solid alpha(@outline, 0.2);
+  border-radius: 0;
+}
+
+tooltip label {
+  color: @on_surface;
+}

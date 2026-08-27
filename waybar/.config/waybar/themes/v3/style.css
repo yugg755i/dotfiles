@@ -1,0 +1,252 @@
+@import "/home/yugg755/.config/waybar/colors.css";
+
+
+/* =========================
+   BASE
+   ========================= */
+
+* {
+  background-color: alpha(@background, 0.90);
+  color: @on_surface;
+
+  border: none;
+  border-radius: 0;
+
+  min-height: 0;
+
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+
+  border: 0px solid alpha(@on_surface, 0.6);
+}
+
+
+/* =========================
+   BAR
+   ========================= */
+
+window#waybar {
+  background-color: alpha(@background, 0.90);
+  color: @on_surface;
+
+  transition-property: background-color;
+  transition-duration: 150ms;
+}
+
+
+/* =========================
+   MODULE SIDES
+   ========================= */
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+
+/* =========================
+   WORKSPACES
+   ========================= */
+
+#workspaces {
+  transition: all 150ms ease-in-out;
+}
+
+#workspaces button {
+  all: initial;
+
+  transition: all 90ms ease-in-out;
+
+  padding: 0 6px;
+  margin: 0 1.5px;
+
+  min-width: 9px;
+
+  border-radius: 0px;
+
+  border: none;
+}
+
+#workspaces button.empty {
+  transition: all 90ms ease-in-out;
+  opacity: 0.5;
+}
+
+#workspaces button.active {
+  transition: all 90ms ease-in-out;
+
+  border-radius: 0px;
+
+  border: 0px solid alpha(@on_surface, 0.64);
+  border-bottom-width: 4px;
+
+  color: @on_surface;
+  font-weight: 700;
+  opacity: 1;
+}
+
+#workspaces button:hover {
+  transition: all 90ms ease-in-out;
+}
+
+#workspaces button.urgent {
+  border-radius: 0px;
+
+  border: 0px solid alpha(@error, 0.7);
+  border-bottom-width: 4px;
+
+  color: @error;
+}
+
+
+/* =========================
+   LAUNCHER
+   ========================= */
+
+#custom-launcher {
+  color: @on_surface;
+
+  font-size: 15px;
+  padding-right: 1.5px;
+  padding-left: 0px;
+
+  min-width: 24px;
+
+  margin: 0 1px;
+  margin-right: 4px;
+}
+
+
+/* =========================
+   SEPARATORS
+   ========================= */
+
+#custom-separator {
+  color: alpha(@on_surface, 0.55);
+
+  padding: 0 4px;
+  margin: 0 1px;
+}
+
+
+/* =========================
+   LYRICS
+   ========================= */
+
+#custom-lyrics {
+
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", sans-serif;
+
+  font-style: italic;
+
+  padding: 0 5px;
+  margin: 3.5px 3.5px;
+
+  min-width: 0;
+}
+
+#custom-lyrics:hover {
+  color: @primary;
+}
+
+
+/* =========================
+   CPU / MEMORY
+   ========================= */
+
+#cpu,
+#memory {
+  min-width: 12px;
+
+  margin: 0 7.5px;
+}
+
+
+/* =========================
+   VOLUME
+   ========================= */
+
+#pulseaudio {
+  margin-left: 1px;
+  margin-right: 4px;
+}
+
+#pulseaudio.muted {
+  color: alpha(@on_surface, 0.45);
+}
+
+
+/* =========================
+   TEMPERATURE
+   ========================= */
+
+#custom-temperature {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+
+/* =========================
+   BACKLIGHT
+   ========================= */
+
+#backlight {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+
+/* =========================
+   BATTERY
+   ========================= */
+
+#battery {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#battery.warning {
+  color: @tertiary;
+}
+
+#battery.critical {
+  color: @error;
+}
+
+
+/* =========================
+   CLOCK
+   ========================= */
+
+#clock {
+  margin-left: 8.75px;
+  margin-right: 4px;
+}
+
+
+/* =========================
+   TOOLTIP
+   ========================= */
+
+tooltip {
+  padding: 2px;
+
+  background-color: @surface_container;
+  color: @on_surface;
+}
+
+tooltip label {
+  color: @on_surface;
+}
+
+
+/* =========================
+   HIDDEN
+   ========================= */
+
+.hidden {
+  opacity: 0;
+}

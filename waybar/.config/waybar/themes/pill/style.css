@@ -1,0 +1,310 @@
+@import "/home/yugg755/.config/waybar/colors.css";
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @on_surface;
+}
+
+
+/* =========================================================
+   TOOLTIP
+   ========================================================= */
+
+tooltip {
+    background-color: alpha(@surface_container_highest, 0.96);
+    border: 1px solid alpha(@outline, 0.35);
+    color: @on_surface;
+}
+
+tooltip label {
+    color: @on_surface;
+}
+
+
+/* =========================================================
+   CONTAINERS
+   ========================================================= */
+
+#ws-pill,
+#clock-pill,
+#system-pill,
+#power-pill {
+    margin: 3px 7px;
+    background-color: @surface_container;
+}
+
+
+/* =========================================================
+   WORKSPACE PILL
+   ========================================================= */
+
+#ws-pill {
+    border: 1px solid alpha(@primary, 0.22);
+    padding: 0 5px;
+}
+
+
+/* =========================================================
+   CLOCK PILL
+   ========================================================= */
+
+#clock-pill {
+    border: 1px solid alpha(@secondary, 0.22);
+    padding: 0 5px;
+}
+
+
+/* =========================================================
+   SYSTEM PILL
+   ========================================================= */
+
+#system-pill {
+    border: 1px solid alpha(@tertiary, 0.22);
+    padding: 0 5px;
+}
+
+
+/* =========================================================
+   POWER PILL
+   ========================================================= */
+
+#power-pill {
+    border: 1px solid alpha(@primary, 0.22);
+    padding: 0 5px;
+}
+
+
+/* =========================================================
+   WORKSPACES
+   ========================================================= */
+
+#workspaces {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    all: unset;
+
+    padding: 0 11px;
+    margin: 3px 2px;
+
+    color: alpha(@on_surface_variant, 0.30);
+    background: transparent;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+
+/* Empty */
+
+#workspaces button.empty {
+    color: alpha(@on_surface_variant, 0.30);
+}
+
+
+/* Occupied but inactive */
+
+#workspaces button:not(.empty):not(.active) {
+    color: alpha(@on_surface_variant, 0.82);
+}
+
+
+/* Active */
+
+#workspaces button.active {
+    background-color: alpha(@primary, 0.20);
+    color: @primary;
+
+    font-weight: 700;
+}
+
+
+/* Make the actual label follow the button color */
+
+#workspaces button label {
+    color: inherit;
+}
+
+
+/* Active label */
+
+#workspaces button.active label {
+    color: inherit;
+}
+
+
+/* Hover */
+
+#workspaces button:hover {
+    background-color: @primary;
+    color: @on_primary;
+}
+
+#workspaces button:hover label {
+    color: @on_primary;
+}
+
+
+/* Urgent */
+
+#workspaces button.urgent {
+    background-color: alpha(@error, 0.20);
+    color: @error;
+}
+
+#workspaces button.urgent label {
+    color: @error;
+}
+
+
+/* =========================================================
+   CLOCK
+   ========================================================= */
+
+#custom-clock {
+    color: @secondary;
+    padding: 0 12px;
+}
+
+#custom-clock.clock-hidden {
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   MODULE SPACING
+   ========================================================= */
+
+#custom-clock,
+#pulseaudio,
+#battery,
+#temperature,
+#backlight,
+#custom-power-mode,
+#custom-sysinfo,
+#mpd {
+    padding: 0 11px;
+}
+
+
+/* =========================================================
+   SYSTEM
+   ========================================================= */
+
+#pulseaudio {
+    color: @primary;
+}
+
+#temperature {
+    color: @tertiary;
+}
+
+#backlight {
+    color: @secondary;
+}
+
+
+/* =========================================================
+   POWER
+   ========================================================= */
+
+#battery {
+    color: @primary;
+}
+
+#battery.charging {
+    color: @primary;
+}
+
+#battery.critical {
+    color: @error;
+}
+
+#custom-power-mode {
+    color: @secondary;
+}
+
+#custom-sysinfo {
+    color: @tertiary;
+}
+
+
+/* =========================================================
+   LYRICS
+   ========================================================= */
+
+#custom-lyrics {
+    font-family:
+        "JetBrainsMono Nerd Font",
+        "Noto Sans CJK JP",
+        sans-serif;
+
+    font-size: 13px;
+    font-style: italic;
+
+    color: @tertiary;
+
+    background-color: @surface_container;
+    border: 1px solid alpha(@tertiary, 0.22);
+
+    margin: 3px 7px;
+    padding: 0 12px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+#custom-lyrics.has-lyrics:hover {
+    background-color: @surface_container_high;
+    color: @on_surface;
+}
+
+#custom-lyrics.no-lyrics,
+#custom-lyrics.lyrics-hidden {
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    background: transparent;
+
+    font-size: 0;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TRAY
+   ========================================================= */
+
+#tray {
+    padding: 0 8px;
+}
+
+
+/* =========================================================
+   MUTED
+   ========================================================= */
+
+#pulseaudio.muted {
+    color: alpha(@on_surface_variant, 0.45);
+}

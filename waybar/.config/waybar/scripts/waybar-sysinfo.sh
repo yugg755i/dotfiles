@@ -8,4 +8,4 @@ uptime=$(uptime -p | sed 's/up //')
 
 tooltip="cpu: ${cpu}%  |  mem: ${mem_used}/${mem_total}  |  disk: ${disk}  |  up: ${uptime}"
 
-printf '{"text": "<span color='"'"'#968f8e'"'"' font_size='"'"'13pt'"'"'>   </span>", "tooltip": "%s"}\n' "$tooltip"
+printf '{"text": "<span color='"'"'#968f8e'"'"' font_size='"'"'13pt'"'"'></span>", "tooltip": "%s"}\n' "$tooltip"
