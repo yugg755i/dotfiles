@@ -1,17 +1,7 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-local seen = {}
-local themes = { "matugen" }
-seen["matugen"] = true
-
+local themes = {}
 for _, theme in ipairs(vim.fn.getcompletion("", "color")) do
-  if not seen[theme] then
-    seen[theme] = true
-    table.insert(themes, theme)
-  end
+  table.insert(themes, theme)
 end
-
 table.sort(themes)
 
 vim.keymap.set("n", "<leader>ut", function()
@@ -25,7 +15,6 @@ vim.keymap.set("n", "<leader>ut", function()
       return
     end
 
-    -- Save selection
     local path = vim.fn.stdpath("config") .. "/lua/config/theme.lua"
     local file = io.open(path, "w")
     if file then
@@ -34,17 +23,28 @@ vim.keymap.set("n", "<leader>ut", function()
     end
 
     package.loaded["config.theme"] = nil
-
     vim.cmd("highlight clear")
     vim.g.colors_name = nil
-
-    if choice == "matugen" then
-      package.loaded["colors.matugen"] = nil
-      require("colors.matugen")
-    else
-      vim.cmd.colorscheme(choice)
-    end
+    vim.cmd.colorscheme(choice)
 
     vim.notify("Theme switched to " .. choice)
   end)
 end, { desc = "Theme Picker" })
+
+-- Keyboard users
+vim.keymap.set("n", "<leader>m", function()
+  require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
+  require("menu.utils").delete_old_menus()
+
+  vim.cmd.exec('"normal! \\<RightMouse>"')
+
+  -- clicked buf
+  local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+
+  require("menu").open(options, { mouse = true })
+end, {})
