@@ -44,7 +44,7 @@ if [[ "$SELECTED_PATH" == *.gif ]]; then
   ffmpeg -y -i "$SELECTED_PATH" -frames:v 1 "$TMPIMG" 2>/dev/null
   matugen image "$TMPIMG" -m dark -t scheme-neutral --prefer value
 else
-  matugen image "$SELECTED_PATH" -m dark -t scheme-neutral --prefer darkness
+  matugen image "$SELECTED_PATH" -m dark -t scheme-neutral --prefer value
 fi
 
 pkill mpvpaper 2>/dev/null || true

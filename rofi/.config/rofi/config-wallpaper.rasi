@@ -38,31 +38,34 @@ window {
 
     spacing:                     0px;
     border:                      1px;
-    border-radius:               20px;
 
-    background-color:            rgba(15,13,18,0.82);
-    border-color:                rgba(203,196,207,0.08);
+    background-color: @surface-container;
+    border-color:               transparent;
 }
 
 /* ───────── Layout ───────── */
 
 mainbox {
     enabled:                     true;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "listview", "inputbar" ];
     background-color:            transparent;
+    spacing:                     0px;
 }
 
 /* ───────── Search Bar ───────── */
 
 inputbar {
     enabled:                     true;
-    padding:                     14px 20px;
-    margin:                      20px 30px 10px 30px;
+    background-color:            transparent;
+    border:                       0px;
+    padding:                      0px;
+    margin:                       0px;
+    spacing:                      0px;
+    expand: false;
+    width: 0px;
+    height: 0px;
 
-    border-radius:               10px;
-    background-color:            rgba(33,30,36,0.85);
-
-    children:                    [ "prompt", "entry" ];
+    children:                    [ "entry" ];
 }
 
 prompt {
@@ -74,33 +77,38 @@ prompt {
 
 entry {
     enabled:                     true;
-    placeholder:                 "Type to filter...";
-    placeholder-color:           @on-surface-variant;
 
-    text-color:                  @on-surface;
     background-color:            transparent;
+    text-color:                  transparent;
+    placeholder:                 "";
+    placeholder-color:           transparent;
+
+    padding:                     0px;
+    margin:                       0px;
+
+    cursor-color:                transparent;
 }
 
 /* ───────── Grid ───────── */
 
 listview {
-    enabled:                     true;
-    columns:                     5;
-    lines:                       1;
+    enabled: true;
+    columns: 5;
+    lines: 1;
 
-    padding:                     26px 36px;
-    spacing:                     20px;
+    padding: 16px 24px;
+    spacing: 12px;
 
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
 
-    layout:                      vertical;
-    fixed-height:                true;
-    fixed-columns:               true;
+    layout: vertical;
+    fixed-height: true;
+    fixed-columns: true;
 
-    background-color:            transparent;
-    border:                      0px;
+    background-color: transparent;
+    border: 0px;
 }
 
 /* ───────── Tiles ───────── */
@@ -108,13 +116,13 @@ listview {
 element {
     enabled:                     true;
     orientation:                 vertical;
-    expand:                      false;
-    padding:                     5px 10px;
-    border-radius:               10px;
-    cursor:                      pointer;
+    expand:                      true;
+    padding:                     0px;
+    cursor:                       pointer;
 
-    text-color:                  @on-surface;
-    background-color:            rgba(255,255,255,0.04);
+    background-color:            transparent;
+
+    children:                     [ element-icon ];
 }
 
 element normal.normal {
@@ -133,8 +141,8 @@ element normal.urgent {
 }
 
 element selected.normal {
-    background-color:            @primary;
-    text-color:                  @on-primary;
+    background-color: rgba(212,187,252,20%);
+    border-color: @primary;
 }
 
 element alternate.normal {
