@@ -21,8 +21,8 @@ activate() {
   '
   pkill -x waybar
   waybar \
-    -c "$WAYBAR_DIR/themes/dwm-style/config.jsonc" \
-    -s "$WAYBAR_DIR/themes/dwm-style/style.css" \
+    -c "$WAYBAR_DIR/themes/minimal-style/config.jsonc" \
+    -s "$WAYBAR_DIR/themes/minimal-style/style.css" \
     >/dev/null 2>&1 &
   disown
 }

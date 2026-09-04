@@ -18,7 +18,7 @@ hl.bind(
 )
 hl.bind(mainMod .. " + CTRL + E", hl.dsp.exec_cmd("loginctl terminate-session $XDG_SESSION_ID"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("kitty -e btop"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("kitty --class floatterm -e nmtui"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("kitty --class floatterm -e --config None nmtui"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("kitty --class floatterm -e bluetui"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("localsend"))
@@ -126,14 +126,14 @@ hl.bind(mainMod .. " + SHIFT + CTRL + H", hl.dsp.window.move({ monitor = "l" }))
 hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.window.move({ monitor = "r" }))
 
 -- === Workspace Navigation ===
-hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = "e+1" }))
-hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ workspace = "e-1" }))
 
 -- === Move Window to Workspace (silent) ===
-hl.bind(mainMod .. " + CTRL + I", hl.dsp.window.move({ workspace = "e+1", follow = false }))
-hl.bind(mainMod .. " + CTRL + U", hl.dsp.window.move({ workspace = "e-1", follow = false }))
+hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.move({ workspace = "e+1", follow = false }))
+hl.bind(mainMod .. " + CTRL + K", hl.dsp.window.move({ workspace = "e-1", follow = false }))
 
 -- === Mouse Wheel Workspace ===
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
