@@ -1,8 +1,3 @@
-[[plugin.deps]]
-use = "yazi-rs/plugins:full-border"
-rev = "ac82af3"
-hash = "eff8ff12fa4e5f035a10d8aeeb4c258d"
-
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
 rev = "0670801"

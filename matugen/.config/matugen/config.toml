@@ -78,9 +78,9 @@ input_path = '~/.config/matugen/templates/zathura-colors'
 output_path = '~/.config/zathura/zathurarc'
 # ...
 
-[templates.nvim-theme]
-input_path = '~/.config/matugen/templates/nvim-theme.lua'
-output_path = '~/.config/nvim/lua/colors/matugen.lua'
+[templates.nvim]
+input_path = '~/.config/matugen/templates/nvim-colors.json'
+output_path = '~/.config/matugen/colors.json'
 
 [config.wallpaper]
 command = "awww"
