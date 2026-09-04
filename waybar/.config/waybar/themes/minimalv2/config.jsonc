@@ -1,0 +1,120 @@
+{
+  "layer": "top",
+  "position": "top",
+
+  "height": 24,
+  "margin": "5px 6px 0 6px",
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "clock"
+  ],
+
+  "modules-center": [
+    "custom/media-arrow",
+    "custom/lyrics"
+  ],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "pulseaudio",
+  ],
+
+  "battery": {
+    "format": "{capacity}%"
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%A %e %B}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1
+  },
+
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  },
+  // WORKSPACES
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0",
+      "default": "?"
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  },
+
+  // =========================
+  // MEDIA (arrow + lyrics script, unchanged)
+  // =========================
+  "custom/media-arrow": {
+    "format": "~",
+    "tooltip": false
+  },
+  "custom/lyrics": {
+    "exec": "~/.config/waybar/scripts/waybar-lyrics.sh",
+    "interval": 1,
+    "on-click": "swaync-client -t",
+    "on-click-right": "bash ~/.config/waybar/scripts/toggle-lyrics.sh",
+    "return-type": "json",
+  },
+
+  // CPU
+  // =========================
+  "cpu": {
+    "interval": 5,
+    "format": "cpu: {usage}%",
+    "tooltip": false
+  },
+
+  // =========================
+  // MEMORY
+  // =========================
+  "memory": {
+    "interval": 5,
+    "format": "| mem: {percentage}%",
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
+  },
+
+  // =========================
+  // TEMPERATURE
+  // =========================
+  "temperature": {
+      "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+      "format": "| temp: {temperatureC}°C",
+      "critical-threshold": 85,
+      "tooltip": false
+  },
+
+  // =========================
+  // VOLUME
+  // =========================
+  "pulseaudio": {
+    "format": "| {icon}: {volume}%",
+    "format-muted": "[󰝟: mute]",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip-format": "Volume: {volume}%"
+  },
+}

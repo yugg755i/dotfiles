@@ -3,11 +3,10 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "margin": "4 4 0 4",
-  "height": 24,
+  "height": 22,
 
   "expand-left": true,
-  "expand-center": true,
+  "fixed-left": false,
 
   "modules-left": [
     "hyprland/workspaces",
@@ -160,7 +159,7 @@
   },
   "custom/lyrics": {
     "exec": "~/.config/waybar/scripts/waybar-lyrics.sh",
-    "interval": 1,
+   "interval": 1,
     "on-click": "swaync-client -t",
     "on-click-right": "bash ~/.config/waybar/scripts/toggle-lyrics.sh",
     "return-type": "json",

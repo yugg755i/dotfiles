@@ -93,27 +93,25 @@ window#waybar {
 /* =========================
    WINDOW TITLE
    ========================= */
-.modules-center {
-  margin: 0;
-  background-color: @primary_container;
-  color: @on_primary_container;
-}
 
 #window {
-  background-color: transparent;
-  color: @on_primary_container;
-
+  min-width: 0;
   padding: 0 16px;
+
   margin: 0;
+
+  color: @on_primary_container;
 
   font-weight: 700;
 }
 
+/* Empty window */
 #window.empty {
   background-color: transparent;
   color: alpha(@on_surface, 0.5);
   font-weight: 500;
 }
+
 /* =========================
    MEDIA (centered)
    ========================= */
@@ -138,7 +136,7 @@ window#waybar {
 #language,
 #cpu,
 #memory,
-#custom-temperature,
+#temperature,
 #backlight,
 #battery,
 #pulseaudio {

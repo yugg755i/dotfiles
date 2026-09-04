@@ -14,8 +14,8 @@
 
   min-height: 0;
 
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 12px;
+  font-family: "IosevkaTerm Nerd Font";
+  font-size: 13px;
 
   border: 0px solid alpha(@on_surface, 0.6);
 }
@@ -138,10 +138,9 @@ window#waybar {
 
 #custom-lyrics {
 
-  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", sans-serif;
+  font-family: "IosevkaTerm Nerd Font", "Noto Sans CJK JP", sans-serif;
 
-  font-style: italic;
-
+  font-weight: 600;
   padding: 0 5px;
   margin: 3.5px 3.5px;
 

@@ -2,119 +2,119 @@
 
 /* Base Colors */
 
-@define-color background #151313;
+@define-color background #131412;
 
 @define-color error #ffb4ab;
 
 @define-color error_container #93000a;
 
-@define-color inverse_on_surface #332f30;
+@define-color inverse_on_surface #30312f;
 
-@define-color inverse_primary #6e595f;
+@define-color inverse_primary #556255;
 
-@define-color inverse_surface #e8e1e1;
+@define-color inverse_surface #e4e2df;
 
-@define-color on_background #e8e1e1;
+@define-color on_background #e4e2df;
 
 @define-color on_error #690005;
 
 @define-color on_error_container #ffdad6;
 
-@define-color on_primary #3e2b31;
+@define-color on_primary #273328;
 
-@define-color on_primary_container #f8dbe3;
+@define-color on_primary_container #d8e6d6;
 
-@define-color on_primary_fixed #27171d;
+@define-color on_primary_fixed #131e14;
 
-@define-color on_primary_fixed_variant #554148;
+@define-color on_primary_fixed_variant #3d4a3e;
 
-@define-color on_secondary #392d31;
+@define-color on_secondary #2b322b;
 
-@define-color on_secondary_container #f2dde2;
+@define-color on_secondary_container #dde5da;
 
-@define-color on_secondary_fixed #23191c;
+@define-color on_secondary_fixed #161d17;
 
-@define-color on_secondary_fixed_variant #514347;
+@define-color on_secondary_fixed_variant #414941;
 
-@define-color on_surface #e8e1e1;
+@define-color on_surface #e4e2df;
 
-@define-color on_surface_variant #ccc5c5;
+@define-color on_surface_variant #c7c6c4;
 
-@define-color on_tertiary #422932;
+@define-color on_tertiary #233425;
 
-@define-color on_tertiary_container #ffd9e4;
+@define-color on_tertiary_container #d3e8d2;
 
-@define-color on_tertiary_fixed #2a151d;
+@define-color on_tertiary_fixed #0e1f12;
 
-@define-color on_tertiary_fixed_variant #5a3f48;
+@define-color on_tertiary_fixed_variant #394b3b;
 
-@define-color outline #958f90;
+@define-color outline #91918e;
 
-@define-color outline_variant #4a4646;
+@define-color outline_variant #464745;
 
-@define-color primary #dbbfc7;
+@define-color primary #bccaba;
 
-@define-color primary_container #554148;
+@define-color primary_container #3d4a3e;
 
-@define-color primary_fixed #f8dbe3;
+@define-color primary_fixed #d8e6d6;
 
-@define-color primary_fixed_dim #dbbfc7;
+@define-color primary_fixed_dim #bccaba;
 
 @define-color scrim #000000;
 
-@define-color secondary #d5c2c6;
+@define-color secondary #c1c9be;
 
-@define-color secondary_container #514347;
+@define-color secondary_container #414941;
 
-@define-color secondary_fixed #f2dde2;
+@define-color secondary_fixed #dde5da;
 
-@define-color secondary_fixed_dim #d5c2c6;
+@define-color secondary_fixed_dim #c1c9be;
 
 @define-color shadow #000000;
 
-@define-color source_color #56484c;
+@define-color source_color #2a432e;
 
-@define-color surface #151313;
+@define-color surface #131412;
 
-@define-color surface_bright #3c3839;
+@define-color surface_bright #393938;
 
-@define-color surface_container #221f1f;
+@define-color surface_container #1f201e;
 
-@define-color surface_container_high #2c292a;
+@define-color surface_container_high #292a28;
 
-@define-color surface_container_highest #373434;
+@define-color surface_container_highest #343533;
 
-@define-color surface_container_low #1e1b1b;
+@define-color surface_container_low #1b1c1a;
 
-@define-color surface_container_lowest #100e0e;
+@define-color surface_container_lowest #0d0e0d;
 
-@define-color surface_dim #151313;
+@define-color surface_dim #131412;
 
-@define-color surface_tint #dbbfc7;
+@define-color surface_tint #bccaba;
 
-@define-color surface_variant #4a4646;
+@define-color surface_variant #464745;
 
-@define-color tertiary #e2bdc8;
+@define-color tertiary #b7ccb7;
 
-@define-color tertiary_container #5a3f48;
+@define-color tertiary_container #394b3b;
 
-@define-color tertiary_fixed #ffd9e4;
+@define-color tertiary_fixed #d3e8d2;
 
-@define-color tertiary_fixed_dim #e2bdc8;
+@define-color tertiary_fixed_dim #b7ccb7;
 
 
 /* Transparency Layers */
-@define-color surface-alpha rgba(21, 19, 19, 0.85);
-@define-color surface-light #2c292a;
-@define-color surface-dark #1e1b1b;
+@define-color surface-alpha rgba(19, 20, 18, 0.85);
+@define-color surface-light #292a28;
+@define-color surface-dark #1b1c1a;
 
 /* Accent */
-@define-color accent #dbbfc7;
-@define-color accent-soft #554148;
+@define-color accent #bccaba;
+@define-color accent-soft #3d4a3e;
 
 /* Text */
-@define-color text #e8e1e1;
-@define-color text-dim #ccc5c5;
+@define-color text #e4e2df;
+@define-color text-dim #c7c6c4;
 
 /* Border */
-@define-color border #4a4646;
+@define-color border #464745;

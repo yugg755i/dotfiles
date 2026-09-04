@@ -130,6 +130,11 @@ window#waybar {
 #custom-lyrics:hover {
   color: @primary_container;
 }
+
+#custom-lyrics.empty {
+  background-color: @primary_container;
+  color: @on_primary_container;
+}
 /* =========================
    RIGHT-SIDE BRACKET MODULES
    ========================= */

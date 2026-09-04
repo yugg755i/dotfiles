@@ -3,27 +3,26 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "height": 22,
-
-  "expand-center": true,
-  "fixed-center": false,
+  "margin": "4 4 0 4",
+  "height": 24,
 
   "modules-left": [
     "hyprland/workspaces",
+    "custom/separator",
+    "hyprland/window"
+  ],
+  "modules-center": [
     "custom/media-arrow",
     "custom/lyrics"
   ],
-  "modules-center": [
-    "hyprland/window"
-  ],
   "modules-right": [
-    "clock",
     "hyprland/language",
     "cpu",
     "memory",
-    "custom/temperature",
+    "temperature",
     "battery",
-    "pulseaudio"
+    "pulseaudio",
+    "clock"
   ],
 
   // =========================
@@ -42,7 +41,7 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "10": "[0]",
+      "10": "0",
       "default": "?"
     },
     "persistent-workspaces": {
@@ -56,17 +55,27 @@
   "hyprland/window": {
     "format": "{title}",
     "separate-outputs": true,
+    "max-length": 35,
     "rewrite": {
       "": "desktop"
     }
   },
 
   // =========================
+  // SEPARATOR
+  // =========================
+
+  "custom/separator": {
+    "format": " |",
+    "tooltip": false
+  },
+
+  // =========================
   // CLOCK
   // =========================
   "clock": {
-    "format": "[{:%I:%M %p}]",
-    "format-alt": "[{:%A %e %B}]",
+    "format": "| {:%I:%M %p}",
+    "format-alt": "| {:%A %e %B}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "interval": 1
   },
@@ -75,7 +84,7 @@
   // KEYBOARD LAYOUT
   // =========================
   "hyprland/language": {
-    "format": "[{}]",
+    "format": "{}",
     "format-en": "us",
     "keyboard-name": ""
   },
@@ -85,7 +94,7 @@
   // =========================
   "cpu": {
     "interval": 5,
-    "format": "[󰍛: {usage}%]",
+    "format": "| 󰍛: {usage}%",
     "tooltip": false,
     "on-click": "kitty -e btop"
   },
@@ -95,7 +104,7 @@
   // =========================
   "memory": {
     "interval": 5,
-    "format": "[ : {percentage}%]",
+    "format": "|  : {percentage}%",
     "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
     "on-click": "kitty -e btop"
   },
@@ -103,18 +112,18 @@
   // =========================
   // TEMPERATURE
   // =========================
-  "custom/temperature": {
-    "exec": "echo '{\"text\":\"[󰔏: '$(cat /sys/class/hwmon/hwmon4/temp1_input | awk '{printf \"%.0f\", $1/1000}')'°C]\"}'",
-    "interval": 3,
-    "return-type": "json",
-    "tooltip": false
+  "temperature": {
+      "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+      "format": "| 󰔏: {temperatureC}°C",
+      "critical-threshold": 85,
+      "tooltip": false
   },
 
   // =========================
   // BACKLIGHT
   // =========================
   "backlight": {
-    "format": "[bl {percent}%]",
+    "format": "| bl {percent}%",
     "tooltip": false
   },
 
@@ -122,8 +131,8 @@
   // BATTERY
   // =========================
   "battery": {
-    "format": "[{icon}: {capacity}%]",
-    "format-charging": "[󰂄: {capacity}%]",
+    "format": " | {icon}: {capacity}%",
+    "format-charging": "| 󰂄: {capacity}%",
     "format-icons": [
       "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
     ],
@@ -139,7 +148,7 @@
   // VOLUME
   // =========================
   "pulseaudio": {
-    "format": "[{icon}: {volume}%]",
+    "format": "| {icon}: {volume}%",
     "format-muted": "[󰝟: mute]",
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"]
@@ -153,7 +162,7 @@
   // MEDIA (arrow + lyrics script, unchanged)
   // =========================
   "custom/media-arrow": {
-    "format": "\u203a",
+    "format": "~",
     "tooltip": false
   },
   "custom/lyrics": {
